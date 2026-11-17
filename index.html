@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>91酒色-深夜酒色味觉图谱</title>
+<meta name="description" content="91酒色是一个专注于夜间饮酒配色与下酒味觉的内容站，整理酒吧配色、酒款搭配、霓虹氛围与下酒小食的具体清单，给出可核对的点单顺序、价格区间与门店实测记录，帮你在夜间场景里少踩坑。">
+<meta name="keywords" content="91酒色">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b1224'/%3E%3Ccircle cx='32' cy='24' r='11' fill='none' stroke='%23f2b46a' stroke-width='3'/%3E%3Cpath d='M32 35v16' stroke='%23f2b46a' stroke-width='3'/%3E%3Cpath d='M22 51h20' stroke='%23c2496b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#120d18;
+  --bg-soft:#1b1224;
+  --panel:#241830;
+  --panel-2:#2d1f3b;
+  --line:#3a2a4b;
+  --text:#f1e9f4;
+  --text-dim:#b9a8c6;
+  --text-mute:#8d7c9b;
+  --amber:#f2b46a;
+  --amber-deep:#d99241;
+  --rose:#c2496b;
+  --teal:#5fb8a8;
+  --radius:14px;
+  --radius-sm:8px;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --space-1:6px;--space-2:12px;--space-3:18px;--space-4:26px;--space-5:38px;--space-6:56px;
+  --font:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --sticky-h:0px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:
+    radial-gradient(1000px 500px at 80% -10%,rgba(194,73,107,.20),transparent 60%),
+    radial-gradient(800px 420px at 0% 10%,rgba(95,184,168,.10),transparent 60%),
+    var(--bg);
+  color:var(--text);font-family:var(--font);line-height:1.75;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--amber);text-decoration:none}
+a:hover{color:#ffd39a}
+h1,h2,h3,h4{line-height:1.35;margin:0}
+p{margin:0 0 var(--space-2)}
+ul,ol{margin:0 0 var(--space-2);padding-left:1.2em}
+li{margin:4px 0}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+
+/* ---------- sticky stack ---------- */
+.sticky-stack{position:sticky;top:0;z-index:60}
+.notice{
+  background:linear-gradient(90deg,#3a1b2c,#241830 55%,#1c2b2a);
+  border-bottom:1px solid var(--line);
+  font-size:13px;color:var(--text-dim);
+  padding:7px 16px;
+}
+.notice-inner{max-width:1180px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.notice b{color:var(--amber);font-weight:600}
+.notice .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex:0 0 auto}
+.notice a{font-size:13px}
+header.site{
+  background:rgba(18,13,24,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  padding:10px 16px;
+}
+.head-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.brand svg{width:38px;height:38px;flex:0 0 auto}
+.brand-name{font-size:19px;font-weight:700;letter-spacing:.5px;color:var(--text)}
+.brand-name em{font-style:normal;color:var(--amber)}
+nav.main{flex:1 1 auto;min-width:0}
+nav.main ul{list-style:none;display:flex;gap:4px;margin:0;padding:0;flex-wrap:wrap}
+nav.main a{
+  display:block;padding:7px 11px;border-radius:99px;font-size:14px;color:var(--text-dim);
+  border:1px solid transparent;
+}
+nav.main a:hover,nav.main a.active{color:var(--text);background:var(--panel);border-color:var(--line)}
+.head-actions{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.search-wrap{position:relative}
+.search-wrap input{
+  width:170px;background:var(--panel);border:1px solid var(--line);color:var(--text);
+  border-radius:99px;padding:8px 14px;font-size:14px;font-family:inherit;
+}
+.search-wrap input::placeholder{color:var(--text-mute)}
+.search-result{
+  position:absolute;right:0;top:calc(100% + 8px);width:290px;background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--radius-sm);box-shadow:var(--shadow);
+  padding:6px;display:none;max-height:320px;overflow:auto;
+}
+.search-result.show{display:block}
+.search-result a,.search-result .empty{display:block;padding:7px 10px;border-radius:6px;font-size:13px;color:var(--text-dim)}
+.search-result a:hover{background:var(--panel-2);color:var(--text)}
+.search-result .empty{color:var(--text-mute)}
+.menu-btn{display:none;background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:7px 11px;font-size:14px;font-family:inherit;cursor:pointer}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  padding:var(--space-6) 16px var(--space-5);
+  border-bottom:1px solid var(--line);
+  scroll-margin-top:120px;
+}
+.hero-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:var(--space-5);align-items:center}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--amber);
+  border:1px solid rgba(242,180,106,.4);border-radius:99px;padding:4px 12px;margin-bottom:16px;
+  background:rgba(242,180,106,.06);
+}
+.hero h1{font-size:clamp(34px,5vw,56px);letter-spacing:1px;margin-bottom:14px}
+.hero h1 span{color:var(--amber)}
+.hero-lead{font-size:16px;color:var(--text-dim);max-width:34em;margin-bottom:var(--space-4)}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:var(--space-4)}
+.btn{
+  display:inline-block;padding:10px 20px;border-radius:99px;font-size:15px;font-weight:600;
+  border:1px solid transparent;transition:transform .15s ease,background .2s;
+}
+.btn-primary{background:var(--amber);color:#22150a}
+.btn-primary:hover{background:#ffc987;color:#22150a;transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);color:var(--text-dim)}
+.btn-ghost:hover{color:var(--text);border-color:var(--amber);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:var(--space-4);flex-wrap:wrap;list-style:none;padding:0;margin:0}
+.hero-stats li{font-size:13px;color:var(--text-mute)}
+.hero-stats b{display:block;font-size:24px;color:var(--text);font-variant-numeric:tabular-nums}
+.hero-art{position:relative;min-height:300px;display:grid;place-items:center}
+.hero-art svg{width:100%;height:auto;max-width:420px;filter:drop-shadow(0 18px 40px rgba(194,73,107,.28))}
+
+/* ---------- layout ---------- */
+.layout{
+  max-width:1180px;margin:0 auto;padding:var(--space-5) 16px var(--space-6);
+  display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--space-5);
+  align-items:start;
+}
+main{min-width:0}
+aside{position:sticky;top:120px;display:flex;flex-direction:column;gap:var(--space-3)}
+@media(max-width:900px){
+  aside{position:static;order:2}
+  .layout{grid-template-columns:1fr}
+}
+section.block{margin-bottom:var(--space-6);scroll-margin-top:130px}
+.block-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:var(--space-3);flex-wrap:wrap}
+.block-head h2{font-size:23px;letter-spacing:.5px}
+.block-head .hint{font-size:13px;color:var(--text-mute)}
+.kicker{font-size:12px;color:var(--rose);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;display:block}
+
+/* ---------- components ---------- */
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3)}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3)}
+@media(max-width:820px){.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:var(--space-3);transition:transform .18s ease,border-color .18s ease;
+}
+.card:hover{transform:translateY(-3px);border-color:#54406b}
+.card h3{font-size:17px;margin-bottom:8px}
+.card p{font-size:14px;color:var(--text-dim);margin-bottom:8px}
+.meta{font-size:12px;color:var(--text-mute);display:flex;gap:10px;flex-wrap:wrap}
+.tag{
+  display:inline-block;font-size:12px;padding:2px 10px;border-radius:99px;
+  background:rgba(242,180,106,.1);color:var(--amber);border:1px solid rgba(242,180,106,.25);
+  margin:2px 4px 2px 0;
+}
+.tag.rose{background:rgba(194,73,107,.12);color:#eb8ba6;border-color:rgba(194,73,107,.3)}
+.tag.teal{background:rgba(95,184,168,.12);color:#7fd2c2;border-color:rgba(95,184,168,.3)}
+.cover{width:100%;height:160px;object-fit:cover;border-radius:var(--radius-sm);margin-bottom:10px;border:1px solid var(--line)}
+.list-stack{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
+.list-stack li{
+  display:flex;gap:12px;align-items:baseline;padding:11px 6px;border-bottom:1px dashed var(--line);
+  font-size:14.5px;flex-wrap:wrap;
+}
+.list-stack li:last-child{border-bottom:none}
+.list-stack .date{font-size:12px;color:var(--text-mute);font-variant-numeric:tabular-nums;flex:0 0 auto}
+.list-stack .ttl{flex:1 1 auto;min-width:0;color:var(--text)}
+.list-stack a:hover .ttl{color:var(--amber)}
+
+/* channel index */
+.channels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;list-style:none;padding:0;margin:0}
+@media(max-width:760px){.channels{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.channels a{
+  display:flex;flex-direction:column;gap:2px;padding:12px;border-radius:var(--radius-sm);
+  background:var(--panel);border:1px solid var(--line);color:var(--text);font-size:14.5px;
+  transition:border-color .15s,transform .15s;
+}
+.channels a:hover{border-color:var(--amber);transform:translateY(-2px)}
+.channels small{font-size:12px;color:var(--text-mute)}
+
+/* deep read */
+.deep{
+  background:linear-gradient(180deg,var(--panel),#1f1529);
+  border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);
+}
+.deep h2{font-size:25px;margin-bottom:6px}
+.deep .byline{font-size:13px;color:var(--text-mute);margin-bottom:var(--space-3);display:flex;gap:12px;flex-wrap:wrap}
+.deep h3{font-size:18.5px;margin:var(--space-4) 0 8px;color:#ffe0b4}
+.deep p{font-size:15.5px;color:#ded2e6}
+.deep .claim{
+  border-left:3px solid var(--rose);background:rgba(194,73,107,.08);
+  padding:12px 16px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin:var(--space-3) 0;
+  font-size:15.5px;
+}
+.deep .claim b{color:#f5b6c6}
+.compare{width:100%;border-collapse:collapse;font-size:14px;margin:var(--space-3) 0}
+.compare th,.compare td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+.compare th{background:var(--panel-2);color:var(--amber);font-weight:600}
+.compare td{color:var(--text-dim)}
+.factline{
+  background:var(--bg-soft);border:1px dashed var(--line);border-radius:var(--radius-sm);
+  padding:12px 16px;font-size:14px;color:var(--text-dim);margin:var(--space-3) 0;
+}
+.factline strong{color:var(--teal)}
+
+/* steps */
+.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:12px}
+.steps li{
+  counter-increment:s;position:relative;padding:12px 16px 12px 56px;background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--radius-sm);font-size:14.5px;color:var(--text-dim);
+}
+.steps li::before{
+  content:counter(s,decimal-leading-zero);position:absolute;left:14px;top:12px;
+  font-size:15px;font-weight:700;color:var(--amber);font-variant-numeric:tabular-nums;
+}
+.steps b{color:var(--text)}
+
+/* panel compare */
+.panel-pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+@media(max-width:560px){.panel-pair{grid-template-columns:1fr}}
+.panel-pair>div{padding:var(--space-3);font-size:14px;color:var(--text-dim)}
+.panel-pair .side-a{background:rgba(95,184,168,.08)}
+.panel-pair .side-b{background:rgba(194,73,107,.10)}
+.panel-pair h4{font-size:15px;color:var(--text);margin-bottom:8px}
+
+/* faq */
+details.faq{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-sm);
+  margin-bottom:8px;overflow:hidden;
+}
+details.faq summary{
+  cursor:pointer;padding:13px 44px 13px 16px;font-size:15px;color:var(--text);position:relative;
+  list-style:none;
+}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{
+  content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  color:var(--amber);font-size:20px;line-height:1;
+}
+details.faq[open] summary::after{content:"–"}
+details.faq .a{padding:0 16px 14px;font-size:14.5px;color:var(--text-dim);border-top:1px solid var(--line);padding-top:12px}
+
+/* timeline */
+.tl{list-style:none;padding:0;margin:0;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl li{position:relative;padding:0 0 var(--space-3) 28px;font-size:14.5px;color:var(--text-dim)}
+.tl li::before{
+  content:"";position:absolute;left:2px;top:8px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--amber);
+}
+.tl .when{font-size:12px;color:var(--amber);font-variant-numeric:tabular-nums;display:block;margin-bottom:2px}
+.tl b{color:var(--text)}
+
+/* comments */
+.comments{display:grid;gap:10px}
+.comment{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:12px 15px;font-size:14px;color:var(--text-dim);
+}
+.comment .who{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;color:var(--text-mute);margin-bottom:5px;flex-wrap:wrap}
+.comment .who b{color:var(--text);font-weight:600}
+.comment .who .stars{color:var(--amber);letter-spacing:1px}
+
+/* tags index */
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags a{
+  font-size:13px;padding:5px 12px;border-radius:99px;background:var(--panel);
+  border:1px solid var(--line);color:var(--text-dim);
+}
+.tags a:hover{color:var(--text);border-color:var(--amber)}
+
+/* aside widgets */
+.widget{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-3)}
+.widget h3{font-size:15px;margin-bottom:10px;color:var(--text)}
+.widget nav ul{list-style:none;padding:0;margin:0;display:grid;gap:2px}
+.widget nav a{display:block;padding:6px 10px;border-radius:6px;font-size:14px;color:var(--text-dim);border-left:2px solid transparent}
+.widget nav a:hover,.widget nav a.active{background:var(--panel-2);color:var(--amber);border-left-color:var(--amber)}
+.rank{list-style:none;padding:0;margin:0;counter-reset:r}
+.rank li{counter-increment:r;display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13.5px;color:var(--text-dim)}
+.rank li:last-child{border-bottom:none}
+.rank li::before{content:counter(r);color:var(--amber);font-weight:700;flex:0 0 18px;font-variant-numeric:tabular-nums}
+.rank a{color:var(--text-dim)}
+.rank a:hover{color:var(--amber)}
+
+/* footer */
+footer.site{
+  border-top:1px solid var(--line);background:var(--bg-soft);padding:var(--space-5) 16px var(--space-4);
+  scroll-margin-top:130px;
+}
+.foot-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--space-4)}
+@media(max-width:820px){.foot-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.foot-inner{grid-template-columns:1fr}}
+.foot-brand .brand{margin-bottom:10px}
+.foot-brand p{font-size:13.5px;color:var(--text-mute);max-width:26em}
+.foot-col h4{font-size:14px;color:var(--text);margin-bottom:8px}
+.foot-col ul{list-style:none;padding:0;margin:0;display:grid;gap:3px}
+.foot-col a{font-size:13.5px;color:var(--text-dim)}
+.foot-col a:hover{color:var(--amber)}
+.foot-bottom{
+  max-width:1180px;margin:var(--space-4) auto 0;padding-top:var(--space-3);border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--text-mute);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+
+/* back to top */
+#toTop{
+  position:fixed;right:16px;bottom:20px;z-index:70;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+  background:var(--panel);color:var(--amber);font-size:18px;cursor:pointer;
+  display:none;place-items:center;box-shadow:var(--shadow);
+}
+#toTop.show{display:grid}
+@media(max-width:560px){#toTop{bottom:14px;right:12px;width:40px;height:40px}}
+
+/* mobile nav */
+@media(max-width:840px){
+  .menu-btn{display:inline-block}
+  nav.main{display:none;flex-basis:100%;order:5}
+  nav.main.open{display:block}
+  nav.main ul{flex-direction:column;gap:2px}
+  nav.main a{padding:9px 12px;border-radius:8px}
+  .search-wrap input{width:130px}
+  aside{top:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .card:hover,.channels a:hover,.btn:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-stack">
+  <div class="notice" id="notice">
+    <div class="notice-inner">
+      <span class="dot" aria-hidden="true"></span>
+      <b>公告</b>
+      <span>11 月 6 日更新：地下酒吧「琥珀屋」冬季酒单换版，上调 3 款，新增“烟熏樱桃酸”</span>
+      <a href="/#latest">查看更新</a>
+      <span aria-hidden="true">·</span>
+      <span>11 月 3 日：下酒小食对照表补入 4 家门店实测价</span>
+    </div>
+  </div>
+
+  <header class="site">
+    <div class="head-inner">
+      <div class="brand">
+        <svg viewBox="0 0 64 64" role="img" aria-label="91酒色图形标志">
+          <rect width="64" height="64" rx="14" fill="#1b1224"/>
+          <circle cx="32" cy="23" r="11" fill="none" stroke="#f2b46a" stroke-width="3"/>
+          <path d="M32 34v16" stroke="#f2b46a" stroke-width="3"/>
+          <path d="M22 50h20" stroke="#c2496b" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="32" cy="23" r="3.4" fill="#c2496b"/>
+        </svg>
+        <span class="brand-name">91<em>酒色</em></span>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">菜单</button>
+      <nav class="main" id="mainNav" aria-label="主题导航">
+        <ul>
+          <li><a href="/#overview">领域概览</a></li>
+          <li><a href="/#picks">精选酒单</a></li>
+          <li><a href="/#latest">最新更新</a></li>
+          <li><a href="/#channels">频道索引</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+        </ul>
+      </nav>
+      <div class="head-actions">
+        <div class="search-wrap">
+          <input type="search" id="searchInput" placeholder="搜酒款 / 门店 / 小食" aria-label="站内搜索">
+          <div class="search-result" id="searchResult" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-eyebrow">夜间味觉 · 第 47 期</span>
+      <h1>91<span>酒色</span></h1>
+      <p class="hero-lead">把一杯酒的颜色、温度与下酒小食的油脂厚度放在同一张表上比对。记录 26 家夜间门店的点单顺序、单杯价格与灯光色温，供你在晚上 9 点后做具体选择。</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="/#deep">读本周判断</a>
+        <a class="btn btn-ghost" href="/#picks">看精选酒单</a>
+      </div>
+      <ul class="hero-stats">
+        <li><b>26</b>家实测门店</li>
+        <li><b>118</b>条点单记录</li>
+        <li><b>9</b>类下酒小食</li>
+        <li><b>11/06</b>最近一次换单</li>
+      </ul>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 420 340" role="presentation">
+        <defs>
+          <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f2b46a" stop-opacity=".95"/>
+            <stop offset="1" stop-color="#c2496b" stop-opacity=".55"/>
+          </linearGradient>
+          <linearGradient id="gB" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5fb8a8" stop-opacity=".8"/>
+            <stop offset="1" stop-color="#5fb8a8" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+        <circle cx="210" cy="150" r="118" fill="none" stroke="url(#gA)" stroke-width="1.5" stroke-dasharray="4 7"/>
+        <circle cx="210" cy="150" r="86" fill="none" stroke="#3a2a4b" stroke-width="1"/>
+        <path d="M152 118h116l-58 84z" fill="none" stroke="#f2b46a" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M210 202v56" stroke="#f2b46a" stroke-width="3"/>
+        <path d="M182 262h56" stroke="#c2496b" stroke-width="4" stroke-linecap="round"/>
+        <path d="M158 132h104" stroke="url(#gB)" stroke-width="10" stroke-linecap="round" opacity=".55"/>
+        <circle cx="210" cy="158" r="7" fill="#c2496b"/>
+        <circle cx="314" cy="84" r="26" fill="none" stroke="#5fb8a8" stroke-width="1.5" opacity=".7"/>
+        <circle cx="96" cy="240" r="18" fill="none" stroke="#c2496b" stroke-width="1.5" opacity=".7"/>
+        <path d="M58 96c26 10 30 40 8 54" fill="none" stroke="#3a2a4b" stroke-width="1.5"/>
+        <path d="M356 226c-24 6-34 30-18 46" fill="none" stroke="#3a2a4b" stroke-width="1.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+<main>
+
+  <section class="block" id="overview">
+    <span class="kicker">Overview</span>
+    <div class="block-head">
+      <h2>领域概览：夜间酒色由什么决定</h2>
+      <span class="hint">截至 11 月 8 日</span>
+    </div>
+    <p>一杯酒在夜里呈现的颜色，主要来自三个变量：基酒的天然色泽、稀释程度与杯壁反光。金酒与伏特加接近透明，朗姆与威士忌带焦糖色，利口酒决定玫红、翠绿与琥珀等色相。同一款“尼格罗尼”在 3000K 暖灯与 4500K 白光下，视觉甜度会差一个档位。</p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>色温与甜感错觉</h3>
+        <p>琥珀屋吧台主灯 2800K，同款威士忌酸被 7 位受访者描述为“更甜”。换到窗边 5000K 位置，其中 5 位改口说“酸度冒头”。</p>
+        <div class="meta"><span>10/29 实测</span><span>7 人样本</span></div>
+      </div>
+      <div class="card">
+        <h3>杯型影响香气路径</h3>
+        <p>古典杯口径 8.5cm，香气横向散开；碟形杯口径 12cm，前段柑橘皮油更明显。同一份“老式”两款杯测得分差 0.8 分（10 分制）。</p>
+        <div class="meta"><span>11/01 对照</span><span>2 组盲测</span></div>
+      </div>
+      <div class="card">
+        <h3>冰的融化速率</h3>
+        <p>手凿冰直径 5cm 在 20 分钟内化掉约 18%，机制方冰同期约 34%。前者更适合需要缓慢释放的烈酒。</p>
+        <div class="meta"><span>11/04 称重</span><span>室温 22℃</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="picks">
+    <span class="kicker">Picks</span>
+    <div class="block-head">
+      <h2>精选内容推荐：本周值得点的五杯</h2>
+      <span class="hint">按 10 月 30 日至 11 月 6 日门店记录整理</span>
+    </div>
+    <div class="grid-2">
+      <article class="card">
+        <img class="cover" src="https://picsum.photos/seed/91jscocktail1/560/320" width="560" height="320" loading="lazy" alt="吧台暖光下的烟熏樱桃酸，杯口有烤过的橙皮">
+        <h3>烟熏樱桃酸 · 琥珀屋</h3>
+        <p>黑樱桃利口酒 30ml 加波本 45ml，蛋白摇出细密泡沫，杯口橙皮用喷枪烤 4 秒。入口先甜后酸，尾段有轻微木炭味。单杯 78 元。</p>
+        <div class="meta"><span class="tag">新品</span><span class="tag teal">11/06 上架</span></div>
+      </article>
+      <article class="card">
+        <img class="cover" src="https://picsum.photos/seed/91jsoldfashioned/560/320" width="560" height="320" loading="lazy" alt="古典杯中的老式鸡尾酒，配一枚手凿大方冰">
+        <h3>手凿冰老式 · 三条巷</h3>
+        <p>黑麦威士忌 60ml，方糖 1 块，苦精 3 dash。冰球直径 5.2cm，前 15 分钟几乎不稀释，适合慢喝。单杯 68 元，周三第二杯半价。</p>
+        <div class="meta"><span class="tag">高复购</span><span class="tag rose">11/02 复访</span></div>
+      </article>
+      <article class="card">
+        <img class="cover" src="https://picsum.photos/seed/91jsginfizz/560/320" width="560" height="320" loading="lazy" alt="高球杯装的青瓜金菲士，杯壁有冷凝水珠">
+        <h3>青瓜金菲士 · 南风窗</h3>
+        <p>金酒 45ml、青瓜汁 20ml、柠檬 15ml、苏打补满。气泡粗，喝前需搅两圈。单杯 62 元，适合开场第一杯压燥热。</p>
+        <div class="meta"><span class="tag teal">清爽向</span><span class="tag">入门友好</span></div>
+      </article>
+      <article class="card">
+        <img class="cover" src="https://picsum.photos/seed/91jssaketonic/560/320" width="560" height="320" loading="lazy" alt="透明玻璃杯里的清酒汤力，浮着一片柚子皮">
+        <h3>清酒汤力 · 白夜书房</h3>
+        <p>纯米吟酿 60ml 加汤力水 90ml，柚子皮压油。酒精度约 7%，气泡感强。单杯 55 元，配盐渍枝豆。</p>
+        <div class="meta"><span class="tag">低度</span><span class="tag teal">10/31 上架</span></div>
+      </article>
+      <article class="card">
+        <h3>无酒精：洛神山楂气泡</h3>
+        <p>洛神花冷萃 40ml、山楂糖浆 15ml、青柠 10ml、气泡水补满。酸度靠山楂撑住，不加酒也有结构。单杯 42 元。</p>
+        <div class="meta"><span class="tag rose">无酒精</span><span class="tag">适合代驾</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="latest">
+    <span class="kicker">Updates</span>
+    <div class="block-head">
+      <h2>最新更新：换单、涨价与临时休业</h2>
+      <span class="hint">按日期倒序 · 11/06 至 10/30</span>
+    </div>
+    <ul class="list-stack">
+      <li>
+        <span class="date">11/06</span>
+        <span class="ttl">琥珀屋冬季酒单换版，3 款涨价 6—8 元，新增“烟熏樱桃酸”与“栗子古典”</span>
+        <span class="tag">换单</span>
+      </li>
+      <li>
+        <span class="date">11/05</span>
+        <span class="ttl">三条巷周三第二杯半价延长至 12 月，参与范围限于老式与金汤力</span>
+        <span class="tag teal">活动</span>
+      </li>
+      <li>
+        <span class="date">11/04</span>
+        <span class="ttl">南风窗因空调检修 11/09 休业一天，当晚预订可顺延至 11/10</span>
+        <span class="tag rose">休业</span>
+      </li>
+      <li>
+        <span class="date">11/02</span>
+        <span class="ttl">白夜书房把清酒汤力从 52 元调到 55 元，杯量由 180ml 增至 200ml</span>
+        <span class="tag">调价</span>
+      </li>
+      <li>
+        <span class="date">10/31</span>
+        <span class="ttl">盐渍枝豆改为每日现煮，供应时间从 20:00 起，售完为止</span>
+        <span class="tag teal">小食</span>
+      </li>
+      <li>
+        <span class="date">10/30</span>
+        <span class="ttl">城西「铁皮罐」新增 6 款低度气泡酒，酒精度 4%—8%，可整瓶外带</span>
+        <span class="tag">新增</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="block" id="channels">
+    <span class="kicker">Channels</span>
+    <div class="block-head">
+      <h2>分类入口：按你今晚想找的东西进</h2>
+      <span class="hint">10 个频道</span>
+    </div>
+    <ul class="channels">
+      <li><a href="/#picks">威士忌酸配比<small>酸甜平衡与蛋白处理</small></a></li>
+      <li><a href="/#picks">手凿冰老式<small>冰型、苦精与稀释节奏</small></a></li>
+      <li><a href="/#picks">金汤力气泡选择<small>汤力水品牌差异</small></a></li>
+      <li><a href="/#guide">下酒小食搭配<small>油脂厚度与咸度对照</small></a></li>
+      <li><a href="/#overview">酒吧灯光色温<small>暖灯与白光的味觉偏移</small></a></li>
+      <li><a href="/#deep">低度酒点单顺序<small>开场到收尾的酒精曲线</small></a></li>
+      <li><a href="/#picks">无酒精特调<small>代驾与不喝酒的人</small></a></li>
+      <li><a href="/#latest">夜间门店换单<small>本月价格与杯量变化</small></a></li>
+      <li><a href="/#faq">单杯价格区间<small>50—90 元档位说明</small></a></li>
+      <li><a href="/#guide">吧台座位礼仪<small>点单、结账与小费</small></a></li>
+    </ul>
+  </section>
+
+  <section class="block" id="deep">
+    <div class="deep">
+      <span class="kicker">Deep Read</span>
+      <h2>深度解析：夜里第一杯该不该点烈酒</h2>
+      <div class="byline">
+        <span>编辑：陈渡</span><span>11/07 定稿</span><span>依据 26 家门店、118 条点单记录</span>
+      </div>
+
+      <p>先把判断放出来：<b>晚上 9 点后进店，第一杯点 40 度以上烈酒的人，平均在第二杯时会换回低度或酸甜型，比例在 118 条记录里是 63 比 44。</b>理由不复杂——空腹、疲劳与短时间摄入共同作用，让舌头对苦与酒精刺激的耐受在前 20 分钟下降。</p>
+
+      <div class="claim">
+        <b>可被反驳的点：</b>如果这家店的开场小食含盐量与油脂都够（例如现煮枝豆加烤芝士），第一杯烈酒的接受度会回升。琥珀屋 10/29 那晚 9 位客人配了小食，7 位第一杯点了烈酒且没有在第二杯改口。
+      </div>
+
+      <h3>案例时间线：10 月 28 日至 11 月 6 日的三段记录</h3>
+      <p>10 月 28 日，三条巷 20:40—22:10 时段共 14 桌，第一杯点老式（酒精约 32%）的 9 桌里，有 6 桌第二杯换成金汤力或金菲士。10 月 31 日白夜书房，清酒汤力上市首日，8 桌里有 5 桌以它开场，全程未换烈酒。11 月 6 日琥珀屋换单首晚，新增的烟熏樱桃酸被点了 11 次，其中 8 次作为第二杯出现，第一杯多为气泡类。</p>
+
+      <table class="compare">
+        <thead>
+          <tr><th>开场选择</th><th>记录桌数</th><th>第二杯改低度/酸甜</th><th>全程未换</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>40 度以上烈酒直饮</td><td>44</td><td>28（63.6%）</td><td>16</td></tr>
+          <tr><td>20—30 度鸡尾酒</td><td>41</td><td>15（36.6%）</td><td>26</td></tr>
+          <tr><td>10 度以下气泡/清酒</td><td>33</td><td>4（12.1%）</td><td>29</td></tr>
+        </tbody>
+      </table>
+
+      <div class="factline">
+        <strong>可核对结构：</strong>口径为“同桌第一杯与第二杯的酒精度差是否超过 10 个百分点”。记录来自门店点单小票与自愿回访，未覆盖单独到店且未点第二杯的客人，样本偏向 2 人以上同行。时间窗为 20:30—23:30。
+      </div>
+
+      <h3>说法差异：调酒师与客人的两套解释</h3>
+      <p>三条巷主调阿岚的说法是“烈酒开场是仪式感，客人愿意为仪式付溢价”，他给的数字是：老式占该店总出杯量的 31%，客单价高出平均值 14 元。常客周女士的说法相反，她 10 月 28 日那晚第一杯点老式，第二杯就换了金菲士，理由是“前面那杯把舌头麻住了，后面吃什么都没味”。两种说法不冲突，一个讲店方收入结构，一个讲个人味觉路径。</p>
+
+      <h3>规则前后变化：低度酒在菜单上的位置</h3>
+      <p>2024 年这 26 家店里只有 7 家把低度或无酒精放在菜单首页；到 2025 年 11 月，这个数字是 19 家。白夜书房 11 月 2 日调价时，把清酒汤力从第 9 位挪到第 2 位，杯量加 20ml。这个改动直接影响了开场选择比例：10 月 31 日之前，该店第一杯为清酒汤力的记录是 2 桌；11 月 1 日至 6 日变成 9 桌。</p>
+
+      <p>把这些放在一起看，第一杯该点什么，取决于你今晚还要不要吃第二轮。若计划 11 点后加小食，烈酒开场会让后段味觉变钝；若只喝一杯就走，烈酒的浓度与杯型带来的停留时间反而更划算。这不是口味偏好问题，是时间分配问题。</p>
+    </div>
+  </section>
+
+  <section class="block" id="guide">
+    <span class="kicker">Guide</span>
+    <div class="block-head">
+      <h2>体验指南：从进门到结账的四步</h2>
+      <span class="hint">适用于吧台与卡座</span>
+    </div>
+    <ol class="steps">
+      <li><b>先看灯光位置。</b>暖光区（2800K—3200K）适合喝带焦糖色的烈酒，白光区（4500K 以上）适合看清气泡与颜色层次。南风窗窗边座位 11/01 测得 5100K。</li>
+      <li><b>问清杯量与冰型。</b>同一款老式，手凿冰 5.2cm 与机制方冰 3cm，稀释节奏差约 16 分钟。点单时直接问“今天的冰是手凿还是机切”。</li>
+      <li><b>按咸度配小食。</b>盐渍枝豆适合开场，烤芝士与坚果适合中段，甜味收尾留给栗子类。三条巷 10/30 的枝豆现煮改版后，咸度明显降了一档。</li>
+      <li><b>结账前确认活动规则。</b>周三第二杯半价只限老式与金汤力，点其他款不参与。琥珀屋换单后部分杯型上调 6—8 元。</li>
+    </ol>
+    <div class="panel-pair" style="margin-top:var(--space-3)">
+      <div class="side-a">
+        <h4>适合第一次去</h4>
+        <p>金菲士、清酒汤力、洛神山楂气泡。酒精度 4%—12%，气泡感强，单杯 42—62 元。喝完还能走两条街。</p>
+      </div>
+      <div class="side-b">
+        <h4>适合留到最后</h4>
+        <p>老式、烟熏樱桃酸、栗子古典。酒精度 28%—38%，杯型偏小，单杯 68—78 元。坐下就别急着起身。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <span class="kicker">FAQ</span>
+    <div class="block-head">
+      <h2>常见问题：价格、杯量与点单顺序</h2>
+      <span class="hint">回答基于 10/30 至 11/07 的门店记录</span>
+    </div>
+    <details class="faq" open>
+      <summary>威士忌酸里加蛋白和不加蛋白，口感差在哪里？</summary>
+      <div class="a">加蛋白的版本摇两轮，泡沫层厚约 8mm，入口前段更圆，酸度被压平；不加蛋白的版本酸与酒精边界更清楚。琥珀屋 78 元的烟熏樱桃酸用的是加蛋白做法，三条巷同价位版本不加。想要清爽就选后者。</div>
+    </details>
+    <details class="faq">
+      <summary>手凿冰老式为什么比普通老式贵 10 元？</summary>
+      <div class="a">手凿冰直径 5.2cm，制作单块约 4 分钟，且需要提前 24 小时冷冻。它在 40 分钟内只稀释约 22%，普通机切方冰同期约 41%。贵的是时间与化冰节奏，不是酒液本身。</div>
+    </details>
+    <details class="faq">
+      <summary>金汤力用不同汤力水，差别真的喝得出来吗？</summary>
+      <div class="a">10/31 白夜书房做了 3 款对照，奎宁含量高的汤力水让金酒的杜松子味更靠后，甜度低的版本前段更干。两款差异在 15ml 补量下仍可辨识，补到 90ml 以上就接近。</div>
+    </details>
+    <details class="faq">
+      <summary>下酒小食里哪一款最不影响后面喝酒？</summary>
+      <div class="a">盐渍枝豆。它的咸度适中，油脂几乎为零，不会在舌面留膜。烤芝士与坚果油脂高，吃完再喝清爽型会显得寡淡。11/03 补入的 4 家实测里，枝豆单份 18—26 元。</div>
+    </details>
+    <details class="faq">
+      <summary>晚上 9 点后一个人去吧台，点单有什么讲究？</summary>
+      <div class="a">先点气泡类或清酒汤力，杯量小、出杯快，方便和调酒师搭话。等确定要留多久再加烈酒。三条巷 10/28 的记录里，单人客第一杯点老式的只有 2 桌，且都在 40 分钟内离店。</div>
+    </details>
+    <details class="faq">
+      <summary>无酒精特调为什么也有酸甜结构？</summary>
+      <div class="a">酸来自青柠与洛神冷萃，甜来自山楂糖浆，气泡提供口感重量。42 元的洛神山楂气泡不加酒，但糖浆比例与含酒版本一致，所以喝起来不像果汁。</div>
+    </details>
+  </section>
+
+  <section class="block" id="comments">
+    <span class="kicker">Comments</span>
+    <div class="block-head">
+      <h2>用户评论：喝过的人怎么说</h2>
+      <span class="hint">6 条 · 均指向具体条目</span>
+    </div>
+    <div class="comments">
+      <div class="comment">
+        <div class="who"><b>阿岚的邻居</b><span>11/07 21:14</span><span class="stars">★★★★☆</span></div>
+        <p>烟熏樱桃酸那 4 秒的喷枪确实有用，橙皮油被烤过以后不刺鼻。就是 78 元一杯偏贵，第二杯我换回了金汤力。</p>
+      </div>
+      <div class="comment">
+        <div class="who"><b>周三常客</b><span>11/06 23:40</span><span class="stars">★★★☆☆</span></div>
+        <p>三条巷的第二杯半价限制在老式和金汤力，点金菲士不参与。规则写在吧台小牌上，字很小，第一次去容易看漏。</p>
+      </div>
+      <div class="comment">
+        <div class="who"><b>不喝酒的司机</b><span>11/05 19:02</span><span class="stars">★★★★★</span></div>
+        <p>洛神山楂气泡是我在南风窗唯一能连喝两杯的东西，42 元不算便宜，但比果汁有层次，山楂的酸不腻。</p>
+      </div>
+      <div class="comment">
+        <div class="who"><b>枝豆爱好者</b><span>11/04 22:31</span><span class="stars">★★★★☆</span></div>
+        <p>白夜书房 10/31 改成现煮以后咸度是降了，之前那种偏咸的版本配清酒更搭。现在这版适合空口吃。</p>
+      </div>
+      <div class="comment">
+        <div class="who"><b>窗边那位</b><span>11/02 20:55</span><span class="stars">★★☆☆☆</span></div>
+        <p>南风窗窗边 5100K 的白光把酒照得很清楚，但坐久了眼睛累。空调检修那天别白跑，11/09 休业。</p>
+      </div>
+      <div class="comment">
+        <div class="who"><b>只喝一杯</b><span>11/01 22:08</span><span class="stars">★★★★☆</span></div>
+        <p>手凿冰老式确实化得慢，40 分钟下来酒体没散。就是 68 元一杯、周三半价，其他日子我还是点金汤力。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="news">
+    <span class="kicker">News</span>
+    <div class="block-head">
+      <h2>相关资讯：价格、供应与门店动态</h2>
+      <span class="hint">3 条只在此处出现</span>
+    </div>
+    <div class="grid-3">
+      <article class="card">
+        <h3>黑樱桃利口酒供货吃紧</h3>
+        <p>两家门店反映 10 月底进的批次甜度偏高，琥珀屋因此把烟熏樱桃酸的糖浆减了 5ml。供货商预计 11 月中旬恢复。</p>
+        <div class="meta"><span>11/06</span><span class="tag rose">供应</span></div>
+      </article>
+      <article class="card">
+        <h3>城西夜间营业延长至 2 点</h3>
+        <p>铁皮罐自 11 月 1 日起把周五、周六打烊时间从 0:30 延到 2:00，新增 6 款 4%—8% 气泡酒可整瓶外带。</p>
+        <div class="meta"><span>11/01</span><span class="tag teal">营业</span></div>
+      </article>
+      <article class="card">
+        <h3>手凿冰工坊扩产</h3>
+        <p>三条巷的冰由同一家工坊供应，日产能从 120 块提到 180 块。店方说短期内不改价，手凿冰老式仍维持 68 元。</p>
+        <div class="meta"><span>10/30</span><span class="tag">供应</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="related">
+    <span class="kicker">Related</span>
+    <div class="block-head">
+      <h2>相关推荐：继续找</h2>
+    </div>
+    <div class="tags">
+      <a href="/#picks">威士忌酸配比</a>
+      <a href="/#picks">手凿冰老式</a>
+      <a href="/#picks">金汤力气泡选择</a>
+      <a href="/#guide">下酒小食搭配</a>
+      <a href="/#overview">酒吧灯光色温</a>
+      <a href="/#deep">低度酒点单顺序</a>
+      <a href="/#picks">无酒精特调</a>
+      <a href="/#latest">夜间门店换单</a>
+      <a href="/#faq">单杯价格区间</a>
+      <a href="/#guide">吧台座位礼仪</a>
+      <a href="/#news">黑樱桃利口酒供货</a>
+    </div>
+  </section>
+
+  <section class="block" id="board">
+    <span class="kicker">Board</span>
+    <div class="block-head">
+      <h2>本周点单榜与时间线</h2>
+      <span class="hint">10/30—11/06 · 按出杯量</span>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>出杯量前五</h3>
+        <ol class="rank" style="padding-left:0">
+          <li><a href="/#picks">手凿冰老式 · 三条巷（142 杯）</a></li>
+          <li><a href="/#picks">青瓜金菲士 · 南风窗（118 杯）</a></li>
+          <li><a href="/#picks">清酒汤力 · 白夜书房（97 杯）</a></li>
+          <li><a href="/#picks">烟熏樱桃酸 · 琥珀屋（64 杯）</a></li>
+          <li><a href="/#picks">洛神山楂气泡 · 南风窗（58 杯）</a></li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>这段时间发生了什么</h3>
+        <ul class="tl">
+          <li><span class="when">10/30</span><b>枝豆改现煮</b>，供应时间从 20:00 起。</li>
+          <li><span class="when">11/01</span><b>铁皮罐延长营业</b>，新增 6 款低度气泡酒。</li>
+          <li><span class="when">11/02</span><b>清酒汤力调价</b>，52 元到 55 元，杯量加 20ml。</li>
+          <li><span class="when">11/06</span><b>琥珀屋换单</b>，3 款涨价，2 款新增。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<aside aria-label="侧栏">
+  <div class="widget">
+    <h3>频道导航</h3>
+    <nav aria-label="侧栏频道">
+      <ul id="sideNav">
+        <li><a href="/#overview">领域概览</a></li>
+        <li><a href="/#picks">精选酒单</a></li>
+        <li><a href="/#latest">最新更新</a></li>
+        <li><a href="/#channels">分类入口</a></li>
+        <li><a href="/#deep">深度解析</a></li>
+        <li><a href="/#guide">体验指南</a></li>
+        <li><a href="/#faq">常见问题</a></li>
+        <li><a href="/#comments">用户评论</a></li>
+        <li><a href="/#news">相关资讯</a></li>
+        <li><a href="/#board">榜单与时间线</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="widget">
+    <h3>今天能核对的数字</h3>
+    <ul class="rank">
+      <li>手凿冰 40 分钟稀释约 22%</li>
+      <li>机制方冰同期约 41%</li>
+      <li>暖光区 2800K，窗边 5100K</li>
+      <li>烈酒开场后换酒 63.6%</li>
+    </ul>
+  </div>
+  <div class="widget">
+    <h3>近期价格档</h3>
+    <p style="font-size:13.5px;color:var(--text-dim);margin:0">气泡与清酒类 42—62 元；酸甜型鸡尾酒 55—78 元；烈酒直饮 68—78 元。活动仅限指定款，以门店当日小牌为准。</p>
+  </div>
+</aside>
+</div>
+
+<footer class="site" id="sitefooter">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="brand">
+        <svg viewBox="0 0 64 64" role="img" aria-label="91酒色页尾标志" width="34" height="34">
+          <rect width="64" height="64" rx="14" fill="#1b1224"/>
+          <circle cx="32" cy="23" r="11" fill="none" stroke="#f2b46a" stroke-width="3"/>
+          <path d="M32 34v16" stroke="#f2b46a" stroke-width="3"/>
+          <path d="M22 50h20" stroke="#c2496b" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-name">91<em>酒色</em></span>
+      </div>
+      <p>把夜间酒款的色、温、价与下酒小食放在一起记录，方便在晚上九点后做具体选择。</p>
+    </div>
+    <div class="foot-col">
+      <h4>频道</h4>
+      <ul>
+        <li><a href="/#overview">领域概览</a></li>
+        <li><a href="/#picks">精选酒单</a></li>
+        <li><a href="/#latest">最新更新</a></li>
+        <li><a href="/#channels">分类入口</a></li>
+        <li><a href="/#deep">深度解析</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>指南</h4>
+      <ul>
+        <li><a href="/#guide">体验指南</a></li>
+        <li><a href="/#faq">常见问题</a></li>
+        <li><a href="/#comments">用户评论</a></li>
+        <li><a href="/#news">相关资讯</a></li>
+        <li><a href="/#board">榜单与时间线</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>说明</h4>
+      <ul>
+        <li>门店与酒款条目为示例数据</li>
+        <li>价格以门店当日菜单为准</li>
+        <li>更新时间 2026-11-08</li>
+        <li>仅面向成年读者</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 91酒色 · 内容仅供夜间消费参考</span>
+    <span>示例数据说明：门店名、酒款价格与评论均为演示内容，不构成实际消费建议。</span>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="回到顶部" title="回到顶部">↑</button>
+
+<script>
+(function(){
+  var searchInput = document.getElementById('searchInput');
+  var searchResult = document.getElementById('searchResult');
+  var items = [
+    {t:'烟熏樱桃酸 · 琥珀屋', u:'/#picks'},
+    {t:'手凿冰老式 · 三条巷', u:'/#picks'},
+    {t:'青瓜金菲士 · 南风窗', u:'/#picks'},
+    {t:'清酒汤力 · 白夜书房', u:'/#picks'},
+    {t:'洛神山楂气泡（无酒精）', u:'/#picks'},
+    {t:'下酒小食搭配：盐渍枝豆', u:'/#guide'},
+    {t:'酒吧灯光色温对照', u:'/#overview'},
+    {t:'深度解析：第一杯该不该点烈酒', u:'/#deep'},
+    {t:'常见问题：手凿冰老式价格', u:'/#faq'},
+    {t:'本周出杯量前五', u:'/#board'},
+    {t:'黑樱桃利口酒供货', u:'/#news'},
+    {t:'夜间门店换单与调价', u:'/#latest'}
+  ];
+  function render(q){
+    var v = q.trim();
+    if(!v){ searchResult.classList.remove('show'); searchResult.innerHTML=''; return; }
+    var hit = items.filter(function(it){ return it.t.indexOf(v) > -1; });
+    searchResult.innerHTML = '';
+    if(hit.length === 0){
+      var d = document.createElement('div');
+      d.className='empty';
+      d.textContent = '没有找到“' + v + '”相关条目，试试酒款名或门店名。';
+      searchResult.appendChild(d);
+    } else {
+      hit.slice(0,8).forEach(function(it){
+        var a = document.createElement('a');
+        a.href = it.u; a.textContent = it.t;
+        a.addEventListener('click', function(){ searchResult.classList.remove('show'); });
+        searchResult.appendChild(a);
+      });
+    }
+    searchResult.classList.add('show');
+  }
+  searchInput.addEventListener('input', function(){ render(this.value); });
+  searchInput.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ searchResult.classList.remove('show'); }
+    if(e.key === 'Enter'){
+      var first = searchResult.querySelector('a');
+      if(first){ window.location.href = first.getAttribute('href'); }
+    }
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.search-wrap')) searchResult.classList.remove('show');
+  });
+
+  var menuBtn = document.getElementById('menuBtn');
+  var mainNav = document.getElementById('mainNav');
+  menuBtn.addEventListener('click', function(){
+    var open = mainNav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mainNav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A' && window.innerWidth <= 840){
+      mainNav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+    }
+  });
+
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 600){ toTop.classList.add('show'); }
+    else { toTop.classList.remove('show'); }
+  }, {passive:true});
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section.block'));
+  var sideLinks = Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var id = en.target.id;
+          sideLinks.forEach(function(a){
+            a.classList.toggle('active', a.getAttribute('href') === '/#' + id);
+          });
+        }
+      });
+    }, {rootMargin:'-140px 0px -60% 0px', threshold:0});
+    sections.forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"91酒色",
+  "description":"夜间饮酒配色与下酒味觉记录站，整理酒款搭配、灯光色温与门店实测。",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"威士忌酸里加蛋白和不加蛋白，口感差在哪里？",
+      "acceptedAnswer":{"@type":"Answer","text":"加蛋白的版本摇两轮，泡沫层厚约8mm，入口前段更圆，酸度被压平；不加蛋白的版本酸与酒精边界更清楚。琥珀屋78元的烟熏樱桃酸用的是加蛋白做法，三条巷同价位版本不加。"}
+    },
+    {
+      "@type":"Question",
+      "name":"手凿冰老式为什么比普通老式贵10元？",
+      "acceptedAnswer":{"@type":"Answer","text":"手凿冰直径5.2cm，制作单块约4分钟，需要提前24小时冷冻，40分钟内只稀释约22%，普通机切方冰同期约41%。"}
+    },
+    {
+      "@type":"Question",
+      "name":"金汤力用不同汤力水，差别真的喝得出来吗？",
+      "acceptedAnswer":{"@type":"Answer","text":"奎宁含量高的汤力水让金酒杜松子味更靠后，甜度低的版本前段更干。在15ml补量下差异可辨识，补到90ml以上就接近。"}
+    },
+    {
+      "@type":"Question",
+      "name":"下酒小食里哪一款最不影响后面喝酒？",
+      "acceptedAnswer":{"@type":"Answer","text":"盐渍枝豆。咸度适中，油脂几乎为零，不在舌面留膜。11月3日补入的4家实测里，枝豆单份18—26元。"}
+    },
+    {
+      "@type":"Question",
+      "name":"晚上9点后一个人去吧台，点单有什么讲究？",
+      "acceptedAnswer":{"@type":"Answer","text":"先点气泡类或清酒汤力，杯量小、出杯快，方便和调酒师搭话，确定停留时间后再加烈酒。"}
+    },
+    {
+      "@type":"Question",
+      "name":"无酒精特调为什么也有酸甜结构？",
+      "acceptedAnswer":{"@type":"Answer","text":"酸来自青柠与洛神冷萃，甜来自山楂糖浆，气泡提供口感重量。42元的洛神山楂气泡不加酒，糖浆比例与含酒版本一致。"}
+    }
+  ]
+}
+</script>
+</body>
+  </html>
