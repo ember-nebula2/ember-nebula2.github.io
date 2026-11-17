@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>以图搜图-反向图片检索与相似图排查指南</title>
+<meta name="description" content="以图搜图是上传图片反查来源与相似图的方法。整理反向检索工具对比、相似图排查步骤、图片版权溯源与去重技巧，附11月更新记录与常见问题解答，适合内容运营与设计取材参考。">
+<meta name="keywords" content="以图搜图">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a4d5c'/%3E%3Ccircle cx='27' cy='27' r='13' fill='none' stroke='%23f4c95d' stroke-width='5'/%3E%3Cline x1='37' y1='37' x2='50' y2='50' stroke='%23f4c95d' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='23' cy='24' r='3' fill='%23f4c95d'/%3E%3C/svg%3E">
+<style>
+:root{
+  --teal:#1a4d5c;
+  --teal-deep:#12363f;
+  --teal-soft:#e6eff1;
+  --gold:#f4c95d;
+  --gold-deep:#c99a2e;
+  --ink:#1e2a2e;
+  --ink-soft:#4b5c61;
+  --ink-faint:#72868b;
+  --paper:#f7f8f6;
+  --card:#ffffff;
+  --line:#d9e2e0;
+  --line-soft:#e8eeec;
+  --red:#b4453a;
+  --r-sm:6px;
+  --r-md:10px;
+  --r-lg:16px;
+  --sp-1:.35rem;
+  --sp-2:.7rem;
+  --sp-3:1.1rem;
+  --sp-4:1.6rem;
+  --sp-5:2.4rem;
+  --sp-6:3.4rem;
+  --sh-1:0 1px 2px rgba(18,54,63,.06),0 2px 8px rgba(18,54,63,.05);
+  --sh-2:0 2px 4px rgba(18,54,63,.08),0 10px 24px rgba(18,54,63,.08);
+  --fs-xs:.78rem;
+  --fs-sm:.875rem;
+  --fs-base:1rem;
+  --fs-md:1.08rem;
+  --fs-lg:1.3rem;
+  --fs-xl:1.62rem;
+  --fs-2xl:2.1rem;
+  --font:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif;
+  --sticky-h:96px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--paper);
+  font-size:var(--fs-base);
+  line-height:1.78;
+  -webkit-text-size-adjust:100%;
+}
+a{color:var(--teal);text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{max-width:100%;display:block;}
+h1,h2,h3,h4{line-height:1.35;margin:0;}
+p{margin:0 0 var(--sp-3);}
+section{scroll-margin-top:var(--sticky-h);}
+ul,ol{margin:0 0 var(--sp-3);padding-left:1.25rem;}
+li{margin-bottom:.3rem;}
+.wrap{width:min(1180px,calc(100% - 2.2rem));margin-inline:auto;}
+.skip{position:absolute;left:-999px;top:0;background:var(--gold);color:var(--ink);padding:.5rem 1rem;z-index:200;}
+.skip:focus{left:.5rem;top:.5rem;}
+
+/* ---------- 吸顶组 ---------- */
+.sticktop{position:sticky;top:0;z-index:100;}
+.announce{
+  background:var(--teal-deep);
+  color:#e9f2f3;
+  font-size:var(--fs-sm);
+  padding:.45rem 0;
+}
+.announce .wrap{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;}
+.announce b{color:var(--gold);font-weight:600;}
+.announce a{color:var(--gold);}
+.announce .tag{
+  border:1px solid rgba(244,201,93,.5);
+  color:var(--gold);
+  border-radius:999px;
+  padding:.05rem .55rem;
+  font-size:var(--fs-xs);
+  white-space:nowrap;
+}
+header.site{
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  box-shadow:var(--sh-1);
+}
+.headbar{
+  display:flex;align-items:center;gap:var(--sp-3);
+  padding:.6rem 0;
+  flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--teal-deep);flex:none;}
+.brand:hover{text-decoration:none;}
+.brand svg{width:38px;height:38px;flex:none;}
+.brand .bname{font-size:var(--fs-lg);font-weight:700;letter-spacing:.02em;}
+.brand .bsub{display:block;font-size:var(--fs-xs);color:var(--ink-faint);font-weight:400;letter-spacing:.04em;}
+nav.mainnav{margin-left:auto;}
+nav.mainnav ul{display:flex;gap:.15rem;list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+nav.mainnav a{
+  display:block;padding:.35rem .6rem;border-radius:var(--r-sm);
+  font-size:var(--fs-sm);color:var(--ink-soft);white-space:nowrap;
+}
+nav.mainnav a:hover,nav.mainnav a:focus-visible{background:var(--teal-soft);color:var(--teal-deep);text-decoration:none;}
+nav.mainnav a[aria-current="true"]{background:var(--teal);color:#fff;}
+.menu-btn{
+  display:none;margin-left:auto;
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
+  padding:.4rem .7rem;font-size:var(--fs-sm);color:var(--teal-deep);
+  cursor:pointer;font-family:inherit;
+}
+.menu-btn:focus-visible{outline:2px solid var(--gold-deep);outline-offset:2px;}
+.searchbox{position:relative;flex:1 1 200px;max-width:280px;}
+.searchbox input{
+  width:100%;font-family:inherit;font-size:var(--fs-sm);
+  padding:.42rem 2.1rem .42rem .75rem;
+  border:1px solid var(--line);border-radius:999px;background:#fbfcfb;color:var(--ink);
+}
+.searchbox input:focus{outline:2px solid var(--gold-deep);outline-offset:1px;}
+.searchbox .ico{position:absolute;right:.65rem;top:50%;transform:translateY(-50%);color:var(--ink-faint);font-size:.95rem;pointer-events:none;}
+.searchmsg{font-size:var(--fs-xs);color:var(--red);position:absolute;top:105%;left:.4rem;background:#fff;padding:.1rem .4rem;border-radius:var(--r-sm);display:none;}
+.searchmsg.on{display:block;}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(1100px 340px at 82% -60px, rgba(244,201,93,.28), transparent 70%),
+    linear-gradient(160deg,#12363f 0%,#1a4d5c 55%,#20616f 100%);
+  color:#f2f8f8;
+  padding:var(--sp-6) 0 var(--sp-5);
+  overflow:hidden;
+}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:var(--sp-5);align-items:center;}
+.hero .kicker{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:var(--fs-sm);letter-spacing:.14em;color:var(--gold);
+  border:1px solid rgba(244,201,93,.45);border-radius:999px;
+  padding:.15rem .8rem;margin-bottom:var(--sp-2);
+}
+.hero h1{font-size:var(--fs-2xl);letter-spacing:.02em;margin-bottom:var(--sp-2);}
+.hero .intro{color:#d6e5e7;max-width:34em;font-size:var(--fs-md);}
+.hero .intro b{color:#fff;font-weight:600;}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:var(--sp-2);}
+.btn{
+  display:inline-block;padding:.62rem 1.3rem;border-radius:999px;
+  font-size:var(--fs-sm);font-weight:600;border:1px solid transparent;cursor:pointer;
+  transition:transform .15s ease,background .15s ease;font-family:inherit;
+}
+.btn:hover{transform:translateY(-2px);text-decoration:none;}
+.btn-primary{background:var(--gold);color:#3a2c05;}
+.btn-primary:hover{background:#ffd970;}
+.btn-ghost{border-color:rgba(242,248,248,.45);color:#eef6f6;}
+.btn-ghost:hover{background:rgba(255,255,255,.1);}
+.hero-stats{
+  display:flex;gap:var(--sp-4);margin-top:var(--sp-4);flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,.16);padding-top:var(--sp-3);
+}
+.hero-stats div{min-width:96px;}
+.hero-stats b{display:block;font-size:1.45rem;color:var(--gold);line-height:1.2;}
+.hero-stats span{font-size:var(--fs-xs);color:#bcd3d6;letter-spacing:.06em;}
+.hero-art{position:relative;height:300px;}
+.hero-art svg{width:100%;height:100%;}
+/* 首屏内嵌图形 */
+.art-card{
+  position:absolute;background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.22);border-radius:var(--r-md);
+  backdrop-filter:blur(3px);
+}
+.art-card.a{width:150px;height:110px;left:6%;top:12%;transform:rotate(-5deg);}
+.art-card.b{width:170px;height:125px;right:4%;top:32%;transform:rotate(4deg);}
+.art-card.c{width:120px;height:88px;left:26%;bottom:6%;transform:rotate(2deg);}
+.art-card i{display:block;position:absolute;border-radius:50%;}
+.art-card.a i{width:34px;height:34px;left:16px;top:16px;background:var(--gold);opacity:.85;}
+.art-card.b i{width:22px;height:22px;right:18px;bottom:16px;background:#9fd4d9;}
+.art-card.c i{width:16px;height:16px;left:14px;bottom:14px;background:#e8a087;}
+.art-scan{
+  position:absolute;left:50%;top:50%;width:64px;height:64px;
+  border:2px solid var(--gold);border-radius:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 0 10px rgba(244,201,93,.12),0 0 0 24px rgba(244,201,93,.06);
+}
+.art-scan::after{
+  content:"";position:absolute;right:-16px;bottom:-16px;width:26px;height:6px;
+  background:var(--gold);border-radius:3px;transform:rotate(45deg);
+}
+
+/* ---------- 布局 ---------- */
+.layout{
+  display:grid;grid-template-columns:1fr 300px;gap:var(--sp-5);
+  align-items:start;padding:var(--sp-5) 0;
+}
+main{min-width:0;}
+aside.side{position:sticky;top:calc(var(--sticky-h) + 12px);display:grid;gap:var(--sp-3);}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:var(--sp-4);box-shadow:var(--sh-1);
+}
+.side .card{padding:var(--sp-3) var(--sp-4);}
+.side h3{font-size:var(--fs-sm);color:var(--ink-faint);letter-spacing:.1em;font-weight:600;margin-bottom:var(--sp-2);}
+.side ul{list-style:none;margin:0;padding:0;}
+.side li{margin:0;}
+.side a.sidelink{
+  display:block;padding:.28rem .5rem;border-radius:var(--r-sm);
+  font-size:var(--fs-sm);color:var(--ink-soft);border-left:2px solid transparent;
+}
+.side a.sidelink:hover{background:var(--teal-soft);text-decoration:none;color:var(--teal-deep);}
+.side a.sidelink.active{border-left-color:var(--gold-deep);background:var(--teal-soft);color:var(--teal-deep);font-weight:600;}
+.side .note{font-size:var(--fs-xs);color:var(--ink-faint);line-height:1.65;}
+
+/* ---------- 板块标题 ---------- */
+.sec-head{display:flex;align-items:flex-end;gap:.8rem;margin-bottom:var(--sp-3);flex-wrap:wrap;}
+.sec-head h2{font-size:var(--fs-xl);color:var(--teal-deep);}
+.sec-head .rule{flex:1;height:1px;background:var(--line);min-width:30px;margin-bottom:.5rem;}
+.sec-head .hint{font-size:var(--fs-xs);color:var(--ink-faint);letter-spacing:.05em;margin-bottom:.5rem;}
+.stack > section{margin-bottom:var(--sp-5);}
+
+/* ---------- 概览 ---------- */
+.overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);}
+.ov{
+  border:1px solid var(--line-soft);border-left:3px solid var(--teal);
+  border-radius:var(--r-md);padding:var(--sp-3);background:#fbfcfb;
+}
+.ov h3{font-size:var(--fs-md);margin-bottom:.35rem;color:var(--teal-deep);}
+.ov p{font-size:var(--fs-sm);color:var(--ink-soft);margin:0;}
+.ov .num{font-size:var(--fs-xs);color:var(--gold-deep);letter-spacing:.08em;display:block;margin-bottom:.2rem;}
+
+/* ---------- 精选推荐 ---------- */
+.pick-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:var(--sp-3);}
+.pick{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+  overflow:hidden;box-shadow:var(--sh-1);display:flex;flex-direction:column;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.pick:hover{transform:translateY(-3px);box-shadow:var(--sh-2);}
+.pick img{width:100%;height:130px;object-fit:cover;}
+.pick .pbody{padding:var(--sp-3);display:flex;flex-direction:column;gap:.35rem;flex:1;}
+.pick .tagline{font-size:var(--fs-xs);color:var(--gold-deep);letter-spacing:.06em;}
+.pick h3{font-size:var(--fs-md);color:var(--teal-deep);}
+.pick p{font-size:var(--fs-sm);color:var(--ink-soft);margin:0;}
+.pick .meta{margin-top:auto;font-size:var(--fs-xs);color:var(--ink-faint);padding-top:.4rem;}
+.pick.big{grid-row:span 2;}
+.pick.big img{height:210px;}
+
+/* ---------- 紧凑列表 ---------- */
+.updates{list-style:none;padding:0;margin:0;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--card);}
+.updates li{display:grid;grid-template-columns:84px 1fr;gap:.8rem;padding:.8rem var(--sp-3);border-bottom:1px solid var(--line-soft);margin:0;}
+.updates li:last-child{border-bottom:0;}
+.updates time{font-size:var(--fs-xs);color:var(--gold-deep);font-weight:600;letter-spacing:.03em;padding-top:.2rem;}
+.updates .u-title{font-size:var(--fs-sm);font-weight:600;color:var(--ink);}
+.updates .u-desc{font-size:var(--fs-xs);color:var(--ink-faint);line-height:1.6;}
+
+/* ---------- 分类索引 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:.55rem;}
+.chips a{
+  display:inline-block;padding:.36rem .85rem;border:1px solid var(--line);
+  border-radius:999px;background:#fff;font-size:var(--fs-sm);color:var(--ink-soft);
+}
+.chips a:hover{background:var(--teal);border-color:var(--teal);color:#fff;text-decoration:none;}
+.chips a small{color:var(--ink-faint);font-size:var(--fs-xs);margin-left:.25rem;}
+.chips a:hover small{color:#cfe3e5;}
+
+/* ---------- 深度解析 ---------- */
+.analysis{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-4) var(--sp-3);box-shadow:var(--sh-1);}
+.analysis h2{font-size:var(--fs-xl);color:var(--teal-deep);margin-bottom:var(--sp-2);}
+.analysis .lede{font-size:var(--fs-md);color:var(--ink);border-left:3px solid var(--gold);padding-left:var(--sp-3);margin-bottom:var(--sp-4);}
+.analysis h3{font-size:var(--fs-md);color:var(--teal-deep);margin:var(--sp-4) 0 var(--sp-2);padding-top:var(--sp-2);border-top:1px dashed var(--line);}
+.analysis h3:first-of-type{border-top:0;padding-top:0;margin-top:0;}
+.quote-card{
+  background:var(--teal-soft);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4);
+  border-left:3px solid var(--teal);font-size:var(--fs-sm);color:var(--teal-deep);margin:var(--sp-3) 0;
+}
+.quote-card b{color:var(--teal-deep);}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin:var(--sp-3) 0;}
+.panel{border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp-3);background:#fbfcfb;}
+.panel h4{font-size:var(--fs-sm);color:var(--ink-soft);letter-spacing:.05em;margin-bottom:.4rem;}
+.panel.fact{border-top:3px solid var(--teal);}
+.panel.claim{border-top:3px solid var(--gold-deep);}
+.panel p{font-size:var(--fs-sm);margin:0;color:var(--ink-soft);}
+.panel ul{font-size:var(--fs-sm);margin:0;color:var(--ink-soft);padding-left:1.1rem;}
+
+/* ---------- 步骤 ---------- */
+.steps{counter-reset:st;display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-3);}
+.step{
+  position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:var(--sp-3) var(--sp-3) var(--sp-3) 3.1rem;
+}
+.step::before{
+  counter-increment:st;content:counter(st);
+  position:absolute;left:.85rem;top:.85rem;width:1.7rem;height:1.7rem;
+  background:var(--teal);color:#fff;border-radius:50%;
+  display:grid;place-items:center;font-size:var(--fs-sm);font-weight:700;
+}
+.step h3{font-size:var(--fs-sm);color:var(--teal-deep);margin-bottom:.25rem;}
+.step p{font-size:var(--fs-xs);color:var(--ink-soft);margin:0;line-height:1.65;}
+
+/* ---------- FAQ ---------- */
+.faq{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--card);overflow:hidden;}
+.faq details{border-bottom:1px solid var(--line-soft);}
+.faq details:last-child{border-bottom:0;}
+.faq summary{
+  cursor:pointer;list-style:none;padding:.85rem var(--sp-3);
+  font-size:var(--fs-sm);font-weight:600;color:var(--teal-deep);position:relative;padding-right:2.4rem;
+}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{
+  content:"+";position:absolute;right:1rem;top:50%;transform:translateY(-50%);
+  color:var(--gold-deep);font-size:1.2rem;font-weight:400;
+}
+.faq details[open] summary::after{content:"–";}
+.faq summary:focus-visible{outline:2px solid var(--gold-deep);outline-offset:-2px;}
+.faq .fa-body{padding:0 var(--sp-3) .9rem;font-size:var(--fs-sm);color:var(--ink-soft);}
+.faq .fa-body p:last-child{margin-bottom:0;}
+
+/* ---------- 评论 ---------- */
+.comments{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-3);}
+.cmt{border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp-3);background:var(--card);}
+.cmt .who{display:flex;align-items:center;gap:.55rem;margin-bottom:.45rem;}
+.cmt .ava{width:30px;height:30px;border-radius:50%;background:var(--teal-soft);color:var(--teal-deep);display:grid;place-items:center;font-size:var(--fs-xs);font-weight:700;}
+.cmt .name{font-size:var(--fs-sm);font-weight:600;color:var(--ink);}
+.cmt .when{font-size:var(--fs-xs);color:var(--ink-faint);margin-left:auto;}
+.cmt p{font-size:var(--fs-sm);margin:0;color:var(--ink-soft);}
+.cmt .stars{color:var(--gold-deep);font-size:var(--fs-xs);letter-spacing:.1em;}
+
+/* ---------- 资讯 ---------- */
+.news{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;}
+.news li{
+  display:grid;grid-template-columns:70px 1fr;gap:.8rem;align-items:baseline;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:.7rem var(--sp-3);
+}
+.news time{font-size:var(--fs-xs);color:var(--ink-faint);}
+.news a{font-size:var(--fs-sm);font-weight:600;}
+.news span{font-size:var(--fs-xs);color:var(--ink-faint);display:block;font-weight:400;margin-top:.1rem;}
+
+/* ---------- 标签推荐 ---------- */
+.tagcloud{display:flex;flex-wrap:wrap;gap:.5rem;}
+.tagcloud a{
+  display:inline-block;padding:.3rem .7rem;border-radius:var(--r-sm);
+  background:var(--teal-soft);color:var(--teal-deep);font-size:var(--fs-sm);
+}
+.tagcloud a:hover{background:var(--teal);color:#fff;text-decoration:none;}
+
+/* ---------- 榜单时间线 ---------- */
+.board{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--card);}
+.board table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);}
+.board th,.board td{padding:.6rem var(--sp-3);text-align:left;border-bottom:1px solid var(--line-soft);vertical-align:top;}
+.board th{background:var(--teal-soft);color:var(--teal-deep);font-size:var(--fs-xs);letter-spacing:.06em;font-weight:600;}
+.board tr:last-child td{border-bottom:0;}
+.board .rk{color:var(--gold-deep);font-weight:700;width:2.2rem;}
+.board .bar{height:6px;border-radius:3px;background:var(--line-soft);overflow:hidden;margin-top:.35rem;}
+.board .bar i{display:block;height:100%;background:var(--teal);}
+.timeline{list-style:none;margin:0;padding:0 0 0 1.1rem;border-left:2px solid var(--line);}
+.timeline li{position:relative;padding:0 0 var(--sp-3) var(--sp-2);margin:0;}
+.timeline li::before{content:"";position:absolute;left:-1.45rem;top:.45rem;width:9px;height:9px;border-radius:50%;background:var(--gold-deep);box-shadow:0 0 0 3px #fff;}
+.timeline b{font-size:var(--fs-sm);color:var(--teal-deep);display:block;}
+.timeline span{font-size:var(--fs-xs);color:var(--ink-faint);}
+
+/* ---------- 页脚 ---------- */
+footer.site{background:var(--teal-deep);color:#c6d8db;padding:var(--sp-5) 0 var(--sp-3);margin-top:var(--sp-4);}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:var(--sp-4);}
+footer.site h3{font-size:var(--fs-sm);color:#fff;margin-bottom:.6rem;letter-spacing:.06em;}
+footer.site .fbrand{display:flex;align-items:center;gap:.6rem;color:#fff;font-size:var(--fs-lg);font-weight:700;margin-bottom:.5rem;}
+footer.site .fbrand svg{width:32px;height:32px;}
+footer.site p{font-size:var(--fs-xs);color:#a7c0c4;line-height:1.75;margin:0 0 .5rem;}
+footer.site ul{list-style:none;padding:0;margin:0;}
+footer.site li{margin-bottom:.3rem;}
+footer.site a{color:#c6d8db;font-size:var(--fs-xs);}
+footer.site a:hover{color:var(--gold);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:var(--sp-4);padding-top:var(--sp-3);font-size:var(--fs-xs);color:#8fa9ae;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+/* 回到顶部 */
+#toTop{
+  position:fixed;right:1rem;bottom:1.2rem;z-index:90;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--teal);color:#fff;border:1px solid rgba(255,255,255,.35);
+  font-size:1rem;cursor:pointer;display:none;place-items:center;
+  box-shadow:var(--sh-2);font-family:inherit;
+}
+#toTop.show{display:grid;}
+#toTop:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:980px){
+  .hero .wrap{grid-template-columns:1fr;gap:var(--sp-3);}
+  .hero-art{height:200px;order:-1;max-width:460px;}
+  .layout{grid-template-columns:1fr;}
+  aside.side{position:static;grid-row:auto;order:2;}
+  .pick-grid{grid-template-columns:1fr 1fr;}
+  .pick.big{grid-row:auto;grid-column:1/-1;}
+  .overview-grid{grid-template-columns:1fr 1fr;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  nav.mainnav{order:4;width:100%;display:none;}
+  nav.mainnav.open{display:block;}
+  nav.mainnav ul{flex-direction:column;gap:0;}
+  .menu-btn{display:block;}
+  .searchbox{order:3;max-width:none;flex-basis:100%;}
+}
+@media (max-width:640px){
+  :root{--sticky-h:132px;--fs-2xl:1.72rem;--fs-xl:1.35rem;}
+  .hero{padding:var(--sp-4) 0;}
+  .pick-grid,.overview-grid,.split,.steps,.comments{grid-template-columns:1fr;}
+  .updates li{grid-template-columns:1fr;gap:.15rem;}
+  .hero-stats{gap:var(--sp-3);}
+  .foot-grid{grid-template-columns:1fr;}
+  .card{padding:var(--sp-3);}
+  .analysis{padding:var(--sp-3);}
+  .news li{grid-template-columns:1fr;gap:.1rem;}
+  .board th:nth-child(3),.board td:nth-child(3){display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{transition:none!important;animation:none!important;}
+  .pick:hover,.btn:hover{transform:none;}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<div class="sticktop">
+  <div class="announce">
+    <div class="wrap">
+      <span class="tag">更新</span>
+      <span><b>2026-11-07</b> 新增 Bing 视觉搜索的“按区域裁切”说明与 Google Lens 多语言结果对比，反向检索结果页增加 3 个案例。</span>
+      <a href="#updates">查看更新记录</a>
+    </div>
+  </div>
+  <header class="site">
+    <div class="wrap headbar">
+      <a class="brand" href="/#top" aria-label="以图搜图 首页">
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect width="64" height="64" rx="14" fill="#1a4d5c"/>
+          <circle cx="27" cy="27" r="13" fill="none" stroke="#f4c95d" stroke-width="5"/>
+          <line x1="37" y1="37" x2="50" y2="50" stroke="#f4c95d" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="23" cy="24" r="3" fill="#f4c95d"/>
+        </svg>
+        <span>
+          <span class="bname">以图搜图</span>
+          <span class="bsub">反向图片检索手册</span>
+        </span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainnav">栏目菜单</button>
+      <nav class="mainnav" id="mainnav" aria-label="主题导航">
+        <ul>
+          <li><a href="/#overview">检索概览</a></li>
+          <li><a href="/#picks">精选工具</a></li>
+          <li><a href="/#updates">更新动态</a></li>
+          <li><a href="/#channels">分类入口</a></li>
+          <li><a href="/#analysis">深度解析</a></li>
+          <li><a href="/#guide">操作步骤</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#board">效果榜单</a></li>
+        </ul>
+      </nav>
+      <div class="searchbox">
+        <input type="search" id="siteSearch" placeholder="搜索条目，如 裁切、版权溯源" aria-label="站内搜索">
+        <span class="ico" aria-hidden="true">⌕</span>
+        <span class="searchmsg" id="searchMsg" role="status"></span>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="kicker">反向检索 · 相似图排查</span>
+      <h1>以图搜图</h1>
+      <p class="intro">把一张图丢进检索框，返回相似图、来源页与尺寸变体。这里整理 <b>Google Lens、Bing 视觉搜索、TinEye、Yandex 图像搜索、百度识图</b> 五个入口的实际差异，以及素材溯源、版权维权、重复图清理时能直接复用的操作顺序。</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#guide">按步骤开始检索</a>
+        <a class="btn btn-ghost" href="#analysis">读深度解析</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>5</b><span>主流通用引擎</span></div>
+        <div><b>11</b><span>可复用条目</span></div>
+        <div><b>2026-11-07</b><span>最近核对</span></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="art-card a"><i></i></div>
+      <div class="art-card b"><i></i></div>
+      <div class="art-card c"><i></i></div>
+      <div class="art-scan"></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap layout">
+  <main id="main">
+    <div class="stack">
+
+      <!-- 1 领域概览 -->
+      <section id="overview">
+        <div class="sec-head">
+          <h2>检索概览：一张图能问出什么</h2>
+          <span class="rule"></span>
+          <span class="hint">覆盖来源、相似度、变体三条线索</span>
+        </div>
+        <div class="overview-grid">
+          <div class="ov">
+            <span class="num">线索一</span>
+            <h3>原始来源与首次出现</h3>
+            <p>照片、截图、海报都可能被多次转载。引擎返回的聚合页会把同一张图的早期托管站排在前面，TinEye 按抓取时间排序，适合追最早发布页。</p>
+          </div>
+          <div class="ov">
+            <span class="num">线索二</span>
+            <h3>相似图与裁切识别</h3>
+            <p>Bing 视觉搜索在框选主体后，对旋转、缩放、加水印的容忍度更高；Google Lens 更擅长识别商品、地标与菜品，返回的是可点选的对象标签。</p>
+          </div>
+          <div class="ov">
+            <span class="num">线索三</span>
+            <h3>尺寸变体与重复文件</h3>
+            <p>同一素材的 1080p 与 720p 版本常散落在不同 CDN。TinEye 的“改动最小”排序能直接缩小到原始分辨率文件，便于替换站内缩略图。</p>
+          </div>
+        </div>
+        <p style="font-size:var(--fs-sm);color:var(--ink-soft);margin-top:var(--sp-3);">判断一张图值不值得深挖，先看检索结果总量。少于 3 条来源页，多半是首发或冷门素材；超过 50 条且分散在不同语种站点，基本可以确认是转载链，下一步该查最早时间戳而不是继续翻相似图。</p>
+      </section>
+
+      <!-- 2 精选内容推荐 -->
+      <section id="picks">
+        <div class="sec-head">
+          <h2>精选推荐：五种检索引擎怎么分工</h2>
+          <span class="rule"></span>
+          <span class="hint">按任务类型选工具</span>
+        </div>
+        <div class="pick-grid">
+          <article class="pick big">
+            <img src="https://picsum.photos/seed/lensproduct/720/420" width="720" height="420" loading="lazy" alt="桌面上摆放的商品包装盒与手机检索界面">
+            <div class="pbody">
+              <span class="tagline">商品与场景识别</span>
+              <h3>Google Lens：先用框选再问来源</h3>
+              <p>上传商品照后，Lens 会先给出“这是什么”的对象判断，再附购物链接与视觉匹配图。11 月 3 日实测，同一张运动鞋照片在多语言结果中返回了 7 个电商站，前三条与官方 SKU 编号一致。用于辨认可复用，用于版权溯源要再补一步 TinEye。</p>
+              <span class="meta">更新于 2026-11-03 · 适用桌面与移动端</span>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/bingcrop/480/280" width="480" height="280" loading="lazy" alt="带裁切框的图片检索结果页示意图">
+            <div class="pbody">
+              <span class="tagline">局部裁切</span>
+              <h3>Bing 视觉搜索的区域框选</h3>
+              <p>对海报里的一角做局部检索，能绕过整图背景干扰。10 月 29 日测试，从一张活动海报裁出二维码旁的 logo，命中 4 个同源页面。</p>
+              <span class="meta">2026-10-29 · 桌面端体验更完整</span>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/tineyeorder/480/280" width="480" height="280" loading="lazy" alt="按时间排序的图片来源列表">
+            <div class="pbody">
+              <span class="tagline">时间溯源</span>
+              <h3>TinEye 的“最早出现”排序</h3>
+              <p>结果列表可切到最旧优先。做新闻配图核查时，这一列比相似度更有用，能直接看到 2019 年就存在的旧图被当成新事件配图。</p>
+              <span class="meta">2026-11-01 · 免费额度有限</span>
+            </div>
+          </article>
+        </div>
+        <p style="font-size:var(--fs-sm);color:var(--ink-soft);margin-top:var(--sp-3);">Yandex 图像搜索在人物与建筑外观上表现突出，百度识图对中文站点收录更完整。五个入口都不具备“判定侵权”的能力，它们只给候选来源，最终结论仍要靠发布时间、授权记录与原始文件元数据交叉核对。</p>
+      </section>
+
+      <!-- 3 最新更新 -->
+      <section id="updates">
+        <div class="sec-head">
+          <h2>最新更新</h2>
+          <span class="rule"></span>
+          <span class="hint">2026 年 10 月中旬至 11 月初</span>
+        </div>
+        <ul class="updates">
+          <li><time>2026-11-07</time><div><span class="u-title">补充 Bing 区域裁切与多语言结果对比</span><span class="u-desc">新增运动鞋、花卉特写两个测试样本，记录命中页数量差异。</span></div></li>
+          <li><time>2026-11-05</time><div><span class="u-title">整理图片版权溯源的四个证据层级</span><span class="u-desc">把元数据、发布时间、授权页、原始分辨率分档，做成一页对照表。</span></div></li>
+          <li><time>2026-11-02</time><div><span class="u-title">更新 TinEye 免费额度与排序选项</span><span class="u-desc">免费账户每日查询次数下调，排序按钮位置改到结果页右上角。</span></div></li>
+          <li><time>2026-10-30</time><div><span class="u-title">增加“截图去边框再检索”的操作步骤</span><span class="u-desc">手机截图直接上传，边框与状态栏会被当成主体，命中率明显下降。</span></div></li>
+          <li><time>2026-10-26</time><div><span class="u-title">收录 6 条用户评论与 2 个核对案例</span><span class="u-desc">含一条对 Lens 购物结果准确性的中性反馈，已标注评论时间。</span></div></li>
+          <li><time>2026-10-17</time><div><span class="u-title">修正反向检索结果页的数量描述</span><span class="u-desc">原文写“数十条”，实测按样本在 3—40 条之间波动，已改为区间表述。</span></div></li>
+        </ul>
+      </section>
+
+      <!-- 4 分类入口 -->
+      <section id="channels">
+        <div class="sec-head">
+          <h2>分类入口</h2>
+          <span class="rule"></span>
+          <span class="hint">按用途拆分，直接进入对应条目</span>
+        </div>
+        <div class="chips">
+          <a href="/#analysis">图片版权溯源 <small>4 层证据</small></a>
+          <a href="/#guide">相似图排查步骤 <small>5 步</small></a>
+          <a href="/#picks">Google Lens 识别商品 <small>实测</small></a>
+          <a href="/#picks">Bing 视觉搜索局部裁切 <small>框选</small></a>
+          <a href="/#picks">TinEye 最早出现时间 <small>排序</small></a>
+          <a href="/#analysis">截图去边框检索 <small>预处理</small></a>
+          <a href="/#board">去重与缩略图替换 <small>榜单</small></a>
+          <a href="/#comments">用户反馈与踩坑 <small>评论</small></a>
+          <a href="/#timeline">素材溯源时间线 <small>案例</small></a>
+          <a href="/#faq">反向检索常见问题 <small>11 问</small></a>
+          <a href="/#tags">相关推荐标签 <small>长尾词</small></a>
+        </div>
+      </section>
+
+      <!-- 5 深度解析 -->
+      <section id="analysis">
+        <div class="analysis">
+          <h2>深度解析：先查时间，再谈相似度</h2>
+          <p class="lede">可被引用的判断：反向检索的结果可信度，取决于来源页发布时间与原始文件分辨率的交集，而不是相似图数量。相似度只说明画面接近，不说明谁是原始出处。</p>
+
+          <h3>案例一：一张 2019 年旧图如何在 2026 年 10 月被当成新事件配图</h3>
+          <p>10 月 24 日，某行业公众号推送的活动回顾里使用了一张暴雨街景图。用 TinEye 上传后切到“最旧优先”，第一条结果落在 2019 年 8 月的一个天气摄影博客，页面含 EXIF 记录：相机型号 Canon EOS 5D Mark IV，拍摄时间 2019-08-11，地点杭州。公众号文章没有标注图片来源。</p>
+          <div class="split">
+            <div class="panel fact">
+              <h4>可核对事实</h4>
+              <ul>
+                <li>TinEye 最旧结果：2019-08-11，天气摄影博客</li>
+                <li>原图分辨率 6720×4480，公众号配图 1080×720</li>
+                <li>原文 EXIF 含 GPS 与拍摄时间</li>
+              </ul>
+            </div>
+            <div class="panel claim">
+              <h4>判断与边界</h4>
+              <p>配图与旧图构图一致、路牌文字相同，可判定为复用。是否侵权要看授权状态，检索结果本身不能给出结论；公众号次日回应称“图片来自公开图库”，但未附链接，属未核实转述。</p>
+            </div>
+          </div>
+
+          <h3>规则前后变化：三个引擎对“裁切图”的处理差异</h3>
+          <p>2026 年 10 月 29 日至 11 月 3 日，用同一张包含人物、海报、二维码的现场照片做了三组测试。把整图上传时，Google Lens 返回 22 条视觉匹配，Bing 返回 14 条，TinEye 返回 6 条。把画面裁到只剩海报右下角后，Lens 降到 5 条，Bing 升到 19 条，TinEye 只剩 1 条且为同源压缩版本。</p>
+          <div class="quote-card">结论落到可核对的区间：<b>整图检索看“面”，局部检索看“点”</b>。要找来源页用整图加 TinEye；要确认某个 logo 或文字出现在哪些页面，用 Bing 的框选命中更多。</div>
+          <p>这组差异有边界：测试只用了 1 张样本，Bing 的优势是否会随样本变化还不确定。10 月 31 日换一张纯文字文档截图重测，三者的结果都降到个位数，裁切带来的增益消失。所以“局部裁切更好用”应限定在包含明确主体、有边缘纹理的照片上。</p>
+
+          <h3>说法差异：转述会丢掉哪一层信息</h3>
+          <p>同一条“某图库起诉自媒体”的消息，在三个渠道出现三种表述。图库官方公告写的是“已就 37 张图片发起维权”，署名日期 10 月 21 日；一家行业媒体的转述写成“大批图片被索赔”，未给数字；论坛帖子则称“随便一张都要赔几千”，属推测。三者在检索核对时应按官方公告为准，转述只能作为线索。</p>
+          <p>把判断拆成可核对结构，可以按四项打分：发布时间差（旧图时间与使用时间相差是否超过 12 个月）、文件分辨率差（使用版本是否低于原图 50%）、授权页是否存在、元数据是否保留。四项里满足三项以上，复用的可能性高；只满足一项，更可能是同场景的不同照片，不该直接下结论。</p>
+        </div>
+      </section>
+
+      <!-- 6 体验指南 -->
+      <section id="guide">
+        <div class="sec-head">
+          <h2>体验指南：一次完整检索的五步</h2>
+          <span class="rule"></span>
+          <span class="hint">按顺序做，能少走两轮</span>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <h3>清理图片再上传</h3>
+            <p>手机截图先裁掉状态栏、底部横条与聊天气泡。截图边框会被引擎当作主体，11 月 2 日测试中命中数从 18 降到 4。</p>
+          </div>
+          <div class="step">
+            <h3>整图先过 TinEye</h3>
+            <p>目标是最早时间戳。结果页切到“最旧优先”，记下前三条来源页域名与日期，这三条基本决定后续方向。</p>
+          </div>
+          <div class="step">
+            <h3>局部再问 Bing</h3>
+            <p>对海报、标签、路牌框选后重新检索。重点看是否出现同源原图或更高分辨率版本，而不是只看相似度百分比。</p>
+          </div>
+          <div class="step">
+            <h3>在来源页核对元数据</h3>
+            <p>打开最早来源页，检查页内发布时间、作者署名、图片说明。原图链接里的文件名与尺寸也能佐证，例如 6720×4480 与 1080×720 的差异。</p>
+          </div>
+          <div class="step">
+            <h3>建立记录表</h3>
+            <p>把引擎、查询时间、结果条数、最早日期、原始分辨率记在同一行。多次检索后，这张表比单次截图更能支撑判断。</p>
+          </div>
+          <div class="step">
+            <h3>区分事实与推测</h3>
+            <p>检索只能给出“同一画面出现在这些页面”。是否侵权、是否盗用，需要授权记录与沟通记录，不能由相似度替代。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 FAQ -->
+      <section id="faq">
+        <div class="sec-head">
+          <h2>常见问题</h2>
+          <span class="rule"></span>
+          <span class="hint">点到问题展开答案</span>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>以图搜图能查到图片的最早发布时间吗？</summary>
+            <div class="fa-body"><p>可以查到候选，但不能保证是绝对最早。TinEye 提供按抓取时间排序，结果页会显示首次收录日期；问题是未被其爬虫抓到的站点不会出现。把 TinEye 的最旧结果与 Google Lens 的来源页发布时间对照，两边都早于 2023 年的条目才算可信。</p></div>
+          </details>
+          <details>
+            <summary>手机截图直接上传为什么命中很少？</summary>
+            <div class="fa-body"><p>截图里的状态栏、聊天气泡、黑边会被当成画面组成部分，引擎按整体特征比对，命中范围被切窄。先裁到只剩目标区域，再去掉压缩产生的模糊边缘，命中条数通常会回升。11 月 2 日对同一张聊天记录截图测试，清理前后分别是 4 条和 18 条。</p></div>
+          </details>
+          <details>
+            <summary>相似度高就等于同一张图吗？</summary>
+            <div class="fa-body"><p>不等于。相似度衡量画面特征接近程度，同场景连拍、同一商品的不同角度都会得到高分。判断同一张图要看三个硬指标：构图是否逐像素一致、有无相同文字或水印、原始分辨率是否成整数倍关系。</p></div>
+          </details>
+          <details>
+            <summary>找到旧图就能认定对方盗图吗？</summary>
+            <div class="fa-body"><p>不能。旧图只证明画面更早存在，授权可能是私下完成的。要补的证据包括原作者的授权说明、图库的购买记录、使用方的来源标注。缺少这些，最多只能提出“请补充来源”的请求。</p></div>
+          </details>
+          <details>
+            <summary>海报上的二维码能单独搜吗？</summary>
+            <div class="fa-body"><p>可以，但要用框选。把二维码连同周围 20% 的版面一起框进去，比只框二维码本体更容易找到同款海报。只框二维码时，引擎会把黑白方块当作图形，返回的多是其他二维码图片。</p></div>
+          </details>
+          <details>
+            <summary>图片版权溯源先看分辨率还是先看时间？</summary>
+            <div class="fa-body"><p>先看时间，再看分辨率。时间决定谁在先，分辨率只能说明哪份文件更完整；旧图也可能被放大后重新发布。两项都满足时，再去看页面是否保留了 EXIF 与作者署名。</p></div>
+          </details>
+          <details>
+            <summary>站内重复缩略图怎么批量清理？</summary>
+            <div class="fa-body"><p>把缩略图导出后统一过一遍 TinEye，结果里“改动最小”排序能聚出同源组。按组保留分辨率最高的那一份，其余替换为统一规格。10 月 30 日测试的 40 张缩略图里，有 9 张其实来自同一素材的两个版本。</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8 用户评论 -->
+      <section id="comments">
+        <div class="sec-head">
+          <h2>用户评论</h2>
+          <span class="rule"></span>
+          <span class="hint">含中性反馈与具体踩坑</span>
+        </div>
+        <div class="comments">
+          <div class="cmt">
+            <div class="who"><span class="ava">林</span><span class="name">林柯</span><span class="when">2026-11-05</span></div>
+            <p>按“先 TinEye 再 Bing”的顺序查了一张活动海报，TinEye 只给 6 条，但最旧那条正好是 2024 年的活动页，比 Bing 的 19 条有用得多。相似度数字看着热闹，时间戳才是关键。</p>
+          </div>
+          <div class="cmt">
+            <div class="who"><span class="ava">赵</span><span class="name">赵一舟</span><span class="when">2026-11-04</span></div>
+            <p>Google Lens 认商品确实准，运动鞋那组能对到 SKU。但购物结果经常混进同款不同色的链接，翻三页才找到官方页，效率一般。</p>
+          </div>
+          <div class="cmt">
+            <div class="who"><span class="ava">陈</span><span class="name">陈默</span><span class="when">2026-11-03</span></div>
+            <p>截图去边框这条很有用。之前直接把聊天记录整张丢进去，只出来 4 条，裁掉顶部状态栏后变成 18 条，差别有点大。</p>
+          </div>
+          <div class="cmt">
+            <div class="who"><span class="ava">吴</span><span class="name">吴小满</span><span class="when">2026-11-01</span></div>
+            <p>说“局部裁切更好用”有点绝对。11 月 1 日拿纯文字页面截图试，裁不裁都一样，三边都是个位数。照片类素材才有这个优势。</p>
+          </div>
+          <div class="cmt">
+            <div class="who"><span class="ava">周</span><span class="name">周予安</span><span class="when">2026-10-30</span></div>
+            <p>Yandex 搜建筑外观挺厉害，一个老小区的外立面找到了同城论坛的旧帖。但中文站点覆盖不行，要找国内转载还得换回百度识图。</p>
+          </div>
+          <div class="cmt">
+            <div class="who"><span class="ava">何</span><span class="name">何雨</span><span class="when">2026-10-27</span></div>
+            <p>记录表这个习惯值得学。上周查图没记引擎和条数，隔两天要回头核最早日期，只能重跑一遍，白花半小时。</p>
+          </div>
+        </div>
+        <p style="font-size:var(--fs-xs);color:var(--ink-faint);margin-top:var(--sp-3);">评论为用户个人体验，检索结果会随引擎索引变化，测试时的条数不代表固定值。</p>
+      </section>
+
+      <!-- 9 相关资讯 -->
+      <section id="news">
+        <div class="sec-head">
+          <h2>相关资讯</h2>
+          <span class="rule"></span>
+          <span class="hint">只报信息，不重复正文</span>
+        </div>
+        <ul class="news">
+          <li><time>2026-11-06</time><div><a href="/#analysis">关键词检索与视觉检索在素材溯源中的分工</a><span>区分“文字先定位”和“画面先定位”两种路径。</span></div></li>
+          <li><time>2026-11-03</time><div><a href="/#guide">桌面端上传大图的三个限制</a><span>单文件体积、像素边长、格式兼容，超出会直接无结果。</span></div></li>
+          <li><time>2026-10-31</time><div><a href="/#board">重复缩略图清理的两种排序策略</a><span>按改动大小、按分辨率，适用场景不同。</span></div></li>
+          <li><time>2026-10-28</time><div><a href="/#comments">用户反馈：检索结果里的电商链接占比</a><span>来自 3 名运营人员的实测记录。</span></div></li>
+          <li><time>2026-10-22</time><div><a href="/#faq">为什么同一张图在不同引擎结果条数差很多</a><span>索引规模、抓取频率、语言站群覆盖差异。</span></div></li>
+        </ul>
+      </section>
+
+      <!-- 10 相关推荐 -->
+      <section id="tags">
+        <div class="sec-head">
+          <h2>相关推荐</h2>
+          <span class="rule"></span>
+          <span class="hint">点标签跳到对应板块</span>
+        </div>
+        <div class="tagcloud">
+          <a href="/#analysis">图片版权溯源</a>
+          <a href="/#guide">相似图排查步骤</a>
+          <a href="/#picks">反向图片搜索工具对比</a>
+          <a href="/#guide">截图去边框检索</a>
+          <a href="/#faq">图片最早发布时间查询</a>
+          <a href="/#board">重复缩略图清理</a>
+          <a href="/#analysis">海报局部裁切检索</a>
+          <a href="/#faq">同场景连拍与同一张图区分</a>
+          <a href="/#timeline">素材溯源时间线</a>
+          <a href="/#comments">检索结果命中数实测</a>
+        </div>
+      </section>
+
+      <!-- 11 榜单 -->
+      <section id="board">
+        <div class="sec-head">
+          <h2>效果榜单：五个入口在四类素材上的表现</h2>
+          <span class="rule"></span>
+          <span class="hint">同一批样本，2026-11-03 至 11-06 测试</span>
+        </div>
+        <div class="board">
+          <table>
+            <thead>
+              <tr><th>排名</th><th>入口</th><th>商品图命中来源页</th><th>旧图最早日期召回</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="rk">1</td><td>Google Lens<div class="bar"><i style="width:86%"></i></div></td><td>7</td><td>2 / 5</td><td>对象识别强，购物链接需再筛</td></tr>
+              <tr><td class="rk">2</td><td>TinEye<div class="bar"><i style="width:74%"></i></div></td><td>3</td><td>5 / 5</td><td>时间溯源最稳，免费额度有限</td></tr>
+              <tr><td class="rk">3</td><td>Bing 视觉搜索<div class="bar"><i style="width:68%"></i></div></td><td>5</td><td>3 / 5</td><td>局部框选优势明显</td></tr>
+              <tr><td class="rk">4</td><td>Yandex 图像搜索<div class="bar"><i style="width:52%"></i></div></td><td>4</td><td>3 / 5</td><td>建筑与人物场景强，中文站弱</td></tr>
+              <tr><td class="rk">5</td><td>百度识图<div class="bar"><i style="width:47%"></i></div></td><td>4</td><td>2 / 5</td><td>中文转载页覆盖好</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:var(--fs-xs);color:var(--ink-faint);margin-top:.6rem;">样本为 5 张商品图、5 张旧活动照。“最早日期召回”指是否在答案里包含正文提到的真实最早日期，命中数随索引变化。</p>
+      </section>
+
+      <!-- 12 时间线 -->
+      <section id="timeline">
+        <div class="sec-head">
+          <h2>素材溯源时间线：一张图的三次转手</h2>
+          <span class="rule"></span>
+          <span class="hint">同一事件，只在此处展开</span>
+        </div>
+        <ol class="timeline">
+          <li><b>2019-08-11 · 天气摄影博客首发</b><span>原图 6720×4480，含 EXIF 与拍摄地点，作者署名“老周”。</span></li>
+          <li><b>2021-03-06 · 图库收录并改写标题</b><span>同一画面换标题后上架，分辨率降为 4096×2731，作者字段改为图库账号。</span></li>
+          <li><b>2024-03-15 · 行业公众号首次使用</b><span>配图 1600×1067，页面未标来源，评论已有读者指出“见过这张图”。</span></li>
+          <li><b>2026-10-24 · 再次作为新事件配图</b><span>配图 1080×720，编辑回应称来自公开图库，未附链接。</span></li>
+        </ol>
+        <p style="font-size:var(--fs-sm);color:var(--ink-soft);">这四步里，只有 2019 年与 2021 年两个节点能在检索结果中直接看到；2024 年与 2026 年的使用记录要靠来源页快照和编辑回应补齐。时间线的用途是排先后，不是判对错。</p>
+      </section>
+
+    </div>
+  </main>
+
+  <aside class="side" aria-label="侧栏导航与说明">
+    <div class="card">
+      <h3>本页栏目</h3>
+      <ul id="sideNav">
+        <li><a class="sidelink" href="/#overview">检索概览</a></li>
+        <li><a class="sidelink" href="/#picks">精选工具</a></li>
+        <li><a class="sidelink" href="/#updates">最新更新</a></li>
+        <li><a class="sidelink" href="/#channels">分类入口</a></li>
+        <li><a class="sidelink" href="/#analysis">深度解析</a></li>
+        <li><a class="sidelink" href="/#guide">体验指南</a></li>
+        <li><a class="sidelink" href="/#faq">常见问题</a></li>
+        <li><a class="sidelink" href="/#comments">用户评论</a></li>
+        <li><a class="sidelink" href="/#news">相关资讯</a></li>
+        <li><a class="sidelink" href="/#tags">相关推荐</a></li>
+        <li><a class="sidelink" href="/#board">效果榜单</a></li>
+        <li><a class="sidelink" href="/#timeline">溯源时间线</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>核对提示</h3>
+      <p class="note">检索结果随索引更新而变化。文中条数与日期均标注测试时间：2026 年 10 月 17 日至 11 月 7 日之间。引用判断时请连同测试条件一起引用。</p>
+    </div>
+    <div class="card">
+      <h3>快速入口</h3>
+      <ul>
+        <li><a class="sidelink" href="/#guide">五步检索流程</a></li>
+        <li><a class="sidelink" href="/#faq">截图命中率问题</a></li>
+        <li><a class="sidelink" href="/#timeline">旧图三次转手</a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="fbrand">
+          <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <rect width="64" height="64" rx="14" fill="#20616f"/>
+            <circle cx="27" cy="27" r="13" fill="none" stroke="#f4c95d" stroke-width="5"/>
+            <line x1="37" y1="37" x2="50" y2="50" stroke="#f4c95d" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="23" cy="24" r="3" fill="#f4c95d"/>
+          </svg>
+          以图搜图
+        </div>
+        <p>把反向检索的结果拆成时间、来源、分辨率三层来读，一次查询对应一条可复核的记录。</p>
+        <p>更新时间：2026-11-07，对应更新记录中的“Bing 区域裁切与多语言结果对比”一条。</p>
+      </div>
+      <div>
+        <h3>检索方法</h3>
+        <ul>
+          <li><a href="/#guide">五步操作顺序</a></li>
+          <li><a href="/#analysis">来源时间判断</a></li>
+          <li><a href="/#faq">截图预处理</a></li>
+          <li><a href="/#board">工具表现对照</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>专题条目</h3>
+        <ul>
+          <li><a href="/#analysis">图片版权溯源</a></li>
+          <li><a href="/#timeline">旧图三次转手</a></li>
+          <li><a href="/#picks">局部裁切检索</a></li>
+          <li><a href="/#board">重复缩略图清理</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>参与与说明</h3>
+        <ul>
+          <li><a href="/#comments">提交使用体验</a></li>
+          <li><a href="/#updates">更新记录</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#tags">相关推荐</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>页面内条目、评论与测试数字为示例数据，用于说明检索方法，不构成法律意见。</span>
+      <span>© 2026 以图搜图 · 反向图片检索手册</span>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+
+<script>
+(function(){
+  var menuBtn=document.getElementById('menuBtn');
+  var nav=document.getElementById('mainnav');
+  if(menuBtn&&nav){
+    menuBtn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.closest('a')&&window.innerWidth<=980){
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  var input=document.getElementById('siteSearch');
+  var msg=document.getElementById('searchMsg');
+  var navLinks=Array.prototype.slice.call(document.querySelectorAll('nav.mainnav a'));
+  if(input){
+    input.addEventListener('input',function(){
+      var q=input.value.trim().toLowerCase();
+      var hit=0;
+      navLinks.forEach(function(a){
+        var text=(a.textContent||'').toLowerCase();
+        var match=!q||text.indexOf(q)>-1;
+        a.parentNode.style.display=match?'':'none';
+        if(match&&q)hit++;
+      });
+      if(!q){
+        msg.classList.remove('on');msg.textContent='';
+      }else if(hit===0){
+        msg.classList.add('on');msg.textContent='没有匹配的栏目，试试“裁切”或“溯源”';
+      }else{
+        msg.classList.remove('on');msg.textContent='';
+      }
+    });
+  }
+
+  var topBtn=document.getElementById('toTop');
+  function onScroll(){
+    if(window.scrollY>520){topBtn.classList.add('show');}
+    else{topBtn.classList.remove('show');}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+  topBtn.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  var sideLinks=Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var sections=sideLinks.map(function(a){
+    return document.querySelector(a.getAttribute('href').replace('/#','#'));
+  }).filter(Boolean);
+
+  function highlight(){
+    var pos=window.scrollY+140;
+    var current=-1;
+    sections.forEach(function(sec,i){
+      if(sec.offsetTop<=pos)current=i;
+    });
+    sideLinks.forEach(function(a,i){
+      a.classList.toggle('active',i===current);
+    });
+  }
+  window.addEventListener('scroll',highlight,{passive:true});
+  window.addEventListener('resize',highlight);
+  highlight();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"以图搜图",
+  "description":"反向图片检索与相似图排查方法，覆盖来源溯源、局部裁切检索与重复图清理。",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"以图搜图能查到图片的最早发布时间吗？","acceptedAnswer":{"@type":"Answer","text":"可以查到候选，但不能保证绝对最早。TinEye 提供按抓取时间排序，未被其爬虫抓到的站点不会出现，需与其他引擎的来源页交叉核对。"}},
+    {"@type":"Question","name":"手机截图直接上传为什么命中很少？","acceptedAnswer":{"@type":"Answer","text":"截图里的状态栏、聊天气泡、黑边会被当成画面组成部分，整体特征比对范围被切窄，先裁到只剩目标区域再上传，命中条数通常回升。"}},
+    {"@type":"Question","name":"相似度高就等于同一张图吗？","acceptedAnswer":{"@type":"Answer","text":"不等于。要看构图是否逐像素一致、有无相同文字或水印、原始分辨率是否成整数倍关系，三者同时满足才可判断为同一张图。"}},
+    {"@type":"Question","name":"找到旧图就能认定对方盗图吗？","acceptedAnswer":{"@type":"Answer","text":"不能。旧图只证明画面更早存在，授权可能私下完成，需补充原作者授权说明、图库购买记录与使用方来源标注。"}},
+    {"@type":"Question","name":"海报上的二维码能单独搜吗？","acceptedAnswer":{"@type":"Answer","text":"可以但要用框选，把二维码连同周围约两成版面一起框入，比只框二维码本体更容易找到同款海报。"}},
+    {"@type":"Question","name":"图片版权溯源先看分辨率还是先看时间？","acceptedAnswer":{"@type":"Answer","text":"先看时间再看分辨率。时间决定谁在先，分辨率说明哪份文件更完整，两项都满足再核对页面是否保留 EXIF 与作者署名。"}},
+    {"@type":"Question","name":"站内重复缩略图怎么批量清理？","acceptedAnswer":{"@type":"Answer","text":"导出缩略图后统一过一遍 TinEye，用改动最小排序聚出同源组，每组保留分辨率最高的版本，其余替换为统一规格。"}}
+  ]
+}
+</script>
+</body>
+  </html>
