@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>禁止的爱善良的未删减-版本差异与观看指南</title>
+<meta name="description" content="禁止的爱善良的未删减版本对照与观看指南：梳理未删减画面差异、剪辑节点、角色线取舍与平台版本记录，附观众讨论与常见疑问，帮助在播放前核对时长与内容清单。">
+<meta name="keywords" content="禁止的爱善良的未删减">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23302a3d'/%3E%3Cpath d='M20 44V20h10c6 0 9 3 9 8 0 4-2 7-6 8l8 8h-8l-7-8v8z' fill='%23e3b04b'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#231f2b;
+  --ink-soft:#4b4459;
+  --muted:#6f6880;
+  --paper:#faf7f2;
+  --card:#ffffff;
+  --line:#e4ddd2;
+  --brand:#302a3d;
+  --brand-2:#4a3f60;
+  --accent:#b8823a;
+  --accent-soft:#f4e7d2;
+  --rose:#8c4a52;
+  --ok:#3f6b52;
+  --radius-s:6px;
+  --radius:10px;
+  --radius-l:16px;
+  --shadow:0 1px 2px rgba(35,31,43,.06),0 6px 18px rgba(35,31,43,.06);
+  --shadow-soft:0 1px 2px rgba(35,31,43,.05);
+  --fs-h1:clamp(1.7rem,4.4vw,2.6rem);
+  --fs-h2:clamp(1.25rem,2.6vw,1.55rem);
+  --fs-h3:1.06rem;
+  --fs-body:1rem;
+  --fs-s:0.875rem;
+  --fs-xs:0.78rem;
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:32px;--sp-7:48px;--sp-8:64px;
+  --announce-h:40px;
+  --head-h:62px;
+  --font:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --serif:"Noto Serif SC","Songti SC",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--font);font-size:var(--fs-body);line-height:1.78;
+  -webkit-text-size-adjust:100%;
+}
+img{max-width:100%;display:block}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--serif);line-height:1.35;margin:0;font-weight:700;color:var(--brand)}
+p{margin:0 0 var(--sp-3)}
+ul,ol{margin:0 0 var(--sp-3);padding-left:1.2em}
+li{margin-bottom:6px}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.skip{position:absolute;left:-9999px;top:0;background:var(--brand);color:#fff;padding:8px 14px;z-index:200}
+.skip:focus{left:8px;top:8px}
+
+/* 吸顶公告条 */
+.announce{
+  position:sticky;top:0;z-index:120;height:var(--announce-h);
+  display:flex;align-items:center;background:var(--brand);color:#efe8dc;
+  font-size:var(--fs-s);border-bottom:1px solid rgba(255,255,255,.08);
+}
+.announce .wrap{display:flex;align-items:center;gap:var(--sp-3);overflow:hidden}
+.announce b{color:#f2cf94;font-weight:700;white-space:nowrap}
+.announce .tick{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+.announce p{margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.announce a{color:#f2cf94;text-decoration:underline;white-space:nowrap}
+
+/* 吸顶页头 */
+.head{
+  position:sticky;top:var(--announce-h);z-index:110;
+  background:rgba(250,247,242,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.head .wrap{height:var(--head-h);display:flex;align-items:center;gap:var(--sp-4)}
+.brand{display:flex;align-items:center;gap:10px;flex:0 0 auto;text-decoration:none}
+.brand:hover{text-decoration:none}
+.brand svg{flex:0 0 auto}
+.brand-name{font-family:var(--serif);font-weight:700;font-size:1rem;color:var(--brand);letter-spacing:.02em}
+.nav{display:flex;gap:2px;margin-left:var(--sp-4);flex:1 1 auto;overflow:hidden}
+.nav a{
+  padding:8px 10px;border-radius:var(--radius-s);color:var(--ink-soft);
+  font-size:var(--fs-s);white-space:nowrap;text-decoration:none;
+}
+.nav a:hover{background:#efe9de;color:var(--brand);text-decoration:none}
+.head-tools{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.search{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 6px 4px 12px;box-shadow:var(--shadow-soft)}
+.search input{border:0;background:transparent;font:inherit;font-size:var(--fs-s);color:var(--ink);width:150px;padding:4px 0}
+.search input:focus{outline:none}
+.search button{border:0;background:var(--brand);color:#fff;border-radius:999px;padding:6px 14px;font-size:var(--fs-s);cursor:pointer;font-family:inherit}
+.search button:hover{background:var(--brand-2)}
+.menu-btn{display:none;border:1px solid var(--line);background:#fff;border-radius:var(--radius-s);padding:8px 10px;cursor:pointer;color:var(--brand);font:inherit;font-size:var(--fs-s)}
+.search-note{display:none;background:#fff;border-bottom:1px solid var(--line);font-size:var(--fs-s);padding:10px 0;color:var(--muted)}
+.search-note.on{display:block}
+
+/* 首屏 */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+  background:radial-gradient(1000px 380px at 82% -10%,#efe0c6 0%,transparent 62%),var(--paper)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--sp-6);align-items:center;padding:var(--sp-7) 0 var(--sp-6)}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-xs);letter-spacing:.14em;color:var(--accent);text-transform:uppercase;border:1px solid #e2cba4;background:#fff8ec;padding:4px 10px;border-radius:999px}
+.hero h1{font-size:var(--fs-h1);margin:var(--sp-3) 0 var(--sp-3);letter-spacing:.01em}
+.hero-lead{color:var(--ink-soft);max-width:36em;margin-bottom:var(--sp-4)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:var(--sp-4);margin:0 0 var(--sp-5);padding:0;list-style:none;font-size:var(--fs-s);color:var(--muted)}
+.hero-meta b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--brand)}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:10px 18px;border-radius:999px;font-size:var(--fs-s);font-weight:600;border:1px solid transparent;text-decoration:none;cursor:pointer;font-family:inherit}
+.btn:hover{text-decoration:none}
+.btn-main{background:var(--brand);color:#fff}
+.btn-main:hover{background:var(--brand-2)}
+.btn-ghost{background:#fff;color:var(--brand);border-color:#d8cec0}
+.btn-ghost:hover{background:#f4eee4}
+.hero-art{position:relative;aspect-ratio:1/1;max-width:420px;justify-self:end;width:100%}
+.hero-art svg{width:100%;height:100%;display:block}
+
+/* 主体布局 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--sp-6);padding:var(--sp-7) 0}
+.main{min-width:0}
+.sec{margin-bottom:var(--sp-7);scroll-margin-top:calc(var(--announce-h) + var(--head-h) + 12px)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-3);border-bottom:2px solid var(--brand);padding-bottom:8px;margin-bottom:var(--sp-4)}
+.sec-head h2{font-size:var(--fs-h2)}
+.sec-head span{font-size:var(--fs-xs);color:var(--muted);white-space:nowrap}
+.sec-desc{color:var(--ink-soft);font-size:var(--fs-s);margin-bottom:var(--sp-4)}
+
+/* 三栏卡片网格 */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-4)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-l);padding:var(--sp-4);box-shadow:var(--shadow-soft);transition:transform .18s ease,box-shadow .18s ease;display:flex;flex-direction:column;gap:6px}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.card h3{font-size:var(--fs-h3)}
+.card p{margin:0;font-size:var(--fs-s);color:var(--ink-soft)}
+.card .tag{font-size:var(--fs-xs);color:var(--accent);font-weight:700;letter-spacing:.04em}
+.card .facts{font-size:var(--fs-xs);color:var(--muted);margin-top:auto;border-top:1px dashed var(--line);padding-top:8px}
+
+/* 紧凑列表 */
+.list{border:1px solid var(--line);border-radius:var(--radius-l);background:var(--card);overflow:hidden}
+.list-item{display:grid;grid-template-columns:88px minmax(0,1fr);gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);border-bottom:1px solid var(--line);align-items:start}
+.list-item:last-child{border-bottom:0}
+.list-item time{font-size:var(--fs-xs);color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
+.list-item h3{font-size:.98rem;margin-bottom:2px}
+.list-item p{margin:0;font-size:var(--fs-s);color:var(--ink-soft)}
+.badge{display:inline-block;font-size:var(--fs-xs);padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:#7a5316;margin-right:6px;vertical-align:1px}
+
+/* 分类标签索引 */
+.tag-index{display:flex;flex-wrap:wrap;gap:8px}
+.tag-index a{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:var(--fs-s);color:var(--ink-soft);text-decoration:none;transition:transform .15s ease}
+.tag-index a:hover{border-color:var(--accent);color:var(--brand);transform:translateY(-2px);text-decoration:none}
+.tag-index a b{color:var(--accent);margin-left:6px;font-weight:700;font-size:var(--fs-xs)}
+
+/* 深度解析 */
+.feature{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-l);padding:var(--sp-5);box-shadow:var(--shadow-soft)}
+.feature h3{font-size:1.12rem;margin:var(--sp-5) 0 var(--sp-2)}
+.feature h3:first-of-type{margin-top:var(--sp-3)}
+.feature p{color:var(--ink-soft);font-size:.97rem}
+.claim{border-left:4px solid var(--accent);background:#fdf8ee;padding:var(--sp-3) var(--sp-4);border-radius:0 var(--radius) var(--radius) 0;margin:var(--sp-4) 0}
+.claim strong{color:var(--brand)}
+.compare{width:100%;border-collapse:collapse;font-size:var(--fs-s);margin:var(--sp-3) 0 var(--sp-4)}
+.compare caption{text-align:left;font-size:var(--fs-xs);color:var(--muted);padding-bottom:6px}
+.compare th,.compare td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.compare th{background:#f3ede2;color:var(--brand);font-weight:700}
+.compare tr:nth-child(even) td{background:#fbf8f3}
+
+/* 体验指南步骤 */
+.steps{counter-reset:step;list-style:none;padding:0;display:grid;gap:var(--sp-3)}
+.steps li{counter-increment:step;position:relative;padding:var(--sp-3) var(--sp-4) var(--sp-3) 56px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);font-size:var(--fs-s);color:var(--ink-soft)}
+.steps li::before{content:counter(step);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--brand);color:#f2cf94;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:var(--fs-s)}
+.steps b{color:var(--brand)}
+
+/* 问答 */
+details.faq{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);margin-bottom:10px;overflow:hidden}
+details.faq summary{cursor:pointer;padding:12px var(--sp-4);font-weight:600;font-size:.96rem;color:var(--brand);list-style:none;position:relative;padding-right:40px}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:1.1rem;font-weight:700}
+details.faq[open] summary::after{content:"–"}
+details.faq .ans{padding:0 var(--sp-4) var(--sp-3);font-size:var(--fs-s);color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:10px;margin-top:0}
+
+/* 评论 */
+.commits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3)}
+.commit{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:var(--sp-4);font-size:var(--fs-s);color:var(--ink-soft)}
+.commit header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--brand-2);color:#f2cf94;display:grid;place-items:center;font-size:var(--fs-xs);font-weight:700;flex:0 0 auto}
+.commit header b{font-size:var(--fs-s);color:var(--brand)}
+.commit header em{font-style:normal;font-size:var(--fs-xs);color:var(--muted);margin-left:auto}
+.commit p{margin:0}
+.commit .mark{background:#f6e7ce;border-radius:3px;padding:0 2px;color:#6d4a12}
+
+/* 相关资讯 双栏 */
+.news{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4)}
+.news article{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:var(--sp-4)}
+.news article h3{font-size:.97rem;margin-bottom:4px}
+.news article p{margin:0;font-size:var(--fs-s);color:var(--ink-soft)}
+.news article .src{display:block;margin-top:8px;font-size:var(--fs-xs);color:var(--muted)}
+
+/* 推荐 */
+.reco{display:flex;flex-wrap:wrap;gap:8px}
+.reco a{font-size:var(--fs-s);padding:6px 12px;border-radius:var(--radius-s);background:#efe9de;color:var(--brand-2);text-decoration:none}
+.reco a:hover{background:var(--accent-soft);color:#6d4a12;text-decoration:none}
+
+/* 时间线 */
+.timeline{list-style:none;padding:0;margin:0;border-left:2px solid var(--line);margin-left:6px}
+.timeline li{position:relative;padding:0 0 var(--sp-4) var(--sp-4)}
+.timeline li::before{content:"";position:absolute;left:-7px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--paper)}
+.timeline time{font-size:var(--fs-xs);color:var(--accent);font-weight:700;letter-spacing:.03em}
+.timeline h3{font-size:.97rem;margin:2px 0 2px}
+.timeline p{margin:0;font-size:var(--fs-s);color:var(--ink-soft)}
+
+/* 对照面板 */
+.panel{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--radius-l);overflow:hidden;background:var(--card)}
+.panel > div{padding:var(--sp-4)}
+.panel > div + div{border-left:1px solid var(--line)}
+.panel h3{font-size:var(--fs-h3);margin-bottom:var(--sp-2)}
+.panel ul{padding-left:1.1em;margin:0;font-size:var(--fs-s);color:var(--ink-soft)}
+.panel .lab{font-size:var(--fs-xs);color:var(--muted);letter-spacing:.08em}
+
+/* 侧栏 */
+.side{display:grid;gap:var(--sp-4);align-content:start;position:sticky;top:calc(var(--announce-h) + var(--head-h) + 16px);max-height:calc(100vh - var(--announce-h) - var(--head-h) - 32px);overflow:auto;scrollbar-width:thin}
+.side-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-l);padding:var(--sp-4);box-shadow:var(--shadow-soft)}
+.side-card h2,.side-card h3{font-size:.98rem;margin-bottom:var(--sp-3);padding-bottom:8px;border-bottom:1px solid var(--line)}
+.side-nav{list-style:none;padding:0;margin:0;font-size:var(--fs-s)}
+.side-nav a{display:block;padding:6px 10px;border-radius:var(--radius-s);color:var(--ink-soft);border-left:2px solid transparent}
+.side-nav a:hover{background:#f3eee5;text-decoration:none}
+.side-nav a.active{background:var(--accent-soft);color:#6d4a12;border-left-color:var(--accent);font-weight:700}
+.mini{list-style:none;padding:0;margin:0;font-size:var(--fs-s);color:var(--ink-soft)}
+.mini li{padding:7px 0;border-bottom:1px dashed var(--line);display:flex;gap:8px}
+.mini li:last-child{border-bottom:0}
+.mini b{color:var(--accent);font-variant-numeric:tabular-nums;flex:0 0 auto}
+
+/* 页尾 */
+footer{background:var(--brand);color:#d8d1c6;margin-top:var(--sp-6);padding:var(--sp-7) 0 var(--sp-5)}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--sp-5);padding-bottom:var(--sp-6);border-bottom:1px solid rgba(255,255,255,.12)}
+footer h2{color:#f2cf94;font-size:.95rem;margin-bottom:var(--sp-3);font-family:var(--font);letter-spacing:.04em}
+footer p{font-size:var(--fs-s);color:#b9b1a5;margin:0 0 var(--sp-2)}
+footer a{color:#d8d1c6;font-size:var(--fs-s);text-decoration:none;display:block;padding:3px 0}
+footer a:hover{color:#f2cf94;text-decoration:underline}
+.f-brand{display:flex;align-items:center;gap:10px;margin-bottom:var(--sp-3)}
+.f-brand span{font-family:var(--serif);font-size:1.05rem;color:#f5efe5;font-weight:700}
+.legal{display:flex;flex-wrap:wrap;gap:var(--sp-4);justify-content:space-between;padding-top:var(--sp-4);font-size:var(--fs-xs);color:#9c948a}
+.legal p{margin:0;color:#9c948a}
+
+/* 回到顶部 */
+#toTop{position:fixed;right:18px;bottom:20px;z-index:90;border:0;border-radius:50%;width:44px;height:44px;background:var(--brand);color:#f2cf94;font:inherit;font-size:1rem;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+#toTop.on{opacity:1;pointer-events:auto}
+#toTop:hover{transform:translateY(-3px)}
+
+@media (max-width:1020px){
+  .layout{grid-template-columns:1fr}
+  .side{position:static;max-height:none;overflow:visible;order:2}
+  .hero .wrap{grid-template-columns:1fr;gap:var(--sp-4);padding-top:var(--sp-5)}
+  .hero-art{justify-self:center;max-width:300px}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav{display:none}
+  .nav.open{display:flex;position:absolute;left:0;right:0;top:var(--head-h);background:var(--paper);border-bottom:1px solid var(--line);flex-wrap:wrap;padding:var(--sp-3) var(--sp-4);margin:0;box-shadow:var(--shadow)}
+  .menu-btn{display:inline-block}
+  .head .wrap{position:relative}
+  .search input{width:110px}
+  footer .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  :root{--fs-body:0.97rem}
+  .wrap{width:calc(100% - 24px)}
+  .cards{grid-template-columns:1fr}
+  .news{grid-template-columns:1fr}
+  .commits{grid-template-columns:1fr}
+  .panel{grid-template-columns:1fr}
+  .panel > div + div{border-left:0;border-top:1px solid var(--line)}
+  .feature{padding:var(--sp-4)}
+  .head .wrap{gap:8px}
+  .brand-name{font-size:.9rem}
+  .search{display:none}
+  .list-item{grid-template-columns:1fr;gap:2px}
+  .list-item time{padding-top:0}
+  .hero-meta{gap:var(--sp-3) var(--sp-4)}
+  #toTop{right:12px;bottom:14px;width:40px;height:40px}
+  footer .cols{grid-template-columns:1fr}
+  .compare th,.compare td{font-size:var(--fs-xs);padding:6px 7px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<div class="announce" id="top">
+  <div class="wrap">
+    <span class="tick" aria-hidden="true"></span>
+    <b>版本速报</b>
+    <p>11月6日新增「第8集删减对照」：通行版112分07秒，未删减版126分34秒，差14分27秒，含3段人物对手戏与1段法院走廊长镜头。<a href="/#latest">看条目</a></p>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <a class="brand" href="/#top" aria-label="禁止的爱善良的未删减 首页">
+      <svg width="34" height="34" viewBox="0 0 40 40" role="img" aria-label="图形标志：两枚交叠的胶片齿孔">
+        <rect x="2" y="2" width="36" height="36" rx="10" fill="#302a3d"/>
+        <rect x="10" y="9" width="20" height="22" rx="3" fill="none" stroke="#e3b04b" stroke-width="1.6"/>
+        <path d="M10 15h20M10 25h20" stroke="#e3b04b" stroke-width="1.2" opacity=".7"/>
+        <circle cx="20" cy="20" r="3.4" fill="#e3b04b"/>
+      </svg>
+      <span class="brand-name">禁止的爱善良的未删减</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">栏目</button>
+    <nav class="nav" id="mainNav" aria-label="主题导航">
+      <a href="/#overview">版本概览</a>
+      <a href="/#picks">精选对照</a>
+      <a href="/#latest">最新更新</a>
+      <a href="/#channels">分类入口</a>
+      <a href="/#deep">深度解析</a>
+      <a href="/#guide">观看指南</a>
+      <a href="/#faq">常见问题</a>
+    </nav>
+    <div class="head-tools">
+      <form class="search" role="search" id="searchForm" aria-label="站内条目查找">
+        <input type="search" id="q" placeholder="找集数、角色、删减点" aria-label="输入关键词查找条目">
+        <button type="submit">查找</button>
+      </form>
+    </div>
+  </div>
+  <div class="search-note" id="searchNote" role="status" aria-live="polite">
+    <div class="wrap" id="searchResult"></div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="wrap">
+      <div>
+        <span class="hero-kicker">剪辑版本 · 对照档案</span>
+        <h1 id="heroTitle">禁止的爱善良的未删减</h1>
+        <p class="hero-lead">把“少掉的十几分钟”按集拆开：哪一段是人物对手戏，哪一段是法院走廊长镜头，哪一版结尾多出两句台词。每一条都标片源、时长与记录日期，方便在播放前核对，不必靠旁人转述。</p>
+        <ul class="hero-meta">
+          <li><b>126:34</b>未删减版第8集总长</li>
+          <li><b>14:27</b>与通行版时长差</li>
+          <li><b>37</b>已登记删减节点</li>
+          <li><b>11-06</b>最近一次校对</li>
+        </ul>
+        <div class="cta">
+          <a class="btn btn-main" href="/#deep">读版本判断</a>
+          <a class="btn btn-ghost" href="/#picks">看逐集对照</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 420" role="img" aria-label="两段胶片与时间轴交叠的原创构图">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#302a3d"/><stop offset="1" stop-color="#4a3f60"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#e3b04b"/><stop offset="1" stop-color="#c9a05d"/>
+            </linearGradient>
+          </defs>
+          <circle cx="210" cy="210" r="188" fill="#f3ece0"/>
+          <g transform="rotate(-12 210 190)">
+            <rect x="72" y="88" width="276" height="120" rx="12" fill="url(#g1)"/>
+            <g fill="#e3b04b" opacity=".9">
+              <rect x="88" y="100" width="10" height="8" rx="2"/><rect x="108" y="100" width="10" height="8" rx="2"/>
+              <rect x="128" y="100" width="10" height="8" rx="2"/><rect x="148" y="100" width="10" height="8" rx="2"/>
+              <rect x="168" y="100" width="10" height="8" rx="2"/><rect x="188" y="100" width="10" height="8" rx="2"/>
+              <rect x="208" y="100" width="10" height="8" rx="2"/><rect x="228" y="100" width="10" height="8" rx="2"/>
+              <rect x="248" y="100" width="10" height="8" rx="2"/><rect x="268" y="100" width="10" height="8" rx="2"/>
+              <rect x="288" y="100" width="10" height="8" rx="2"/><rect x="308" y="100" width="10" height="8" rx="2"/>
+              <rect x="88" y="188" width="10" height="8" rx="2"/><rect x="108" y="188" width="10" height="8" rx="2"/>
+              <rect x="128" y="188" width="10" height="8" rx="2"/><rect x="148" y="188" width="10" height="8" rx="2"/>
+              <rect x="168" y="188" width="10" height="8" rx="2"/><rect x="188" y="188" width="10" height="8" rx="2"/>
+              <rect x="208" y="188" width="10" height="8" rx="2"/><rect x="228" y="188" width="10" height="8" rx="2"/>
+              <rect x="248" y="188" width="10" height="8" rx="2"/><rect x="268" y="188" width="10" height="8" rx="2"/>
+              <rect x="288" y="188" width="10" height="8" rx="2"/><rect x="308" y="188" width="10" height="8" rx="2"/>
+            </g>
+            <rect x="96" y="118" width="112" height="60" rx="4" fill="#efe6d6" opacity=".92"/>
+            <rect x="216" y="118" width="112" height="60" rx="4" fill="#efe6d6" opacity=".55"/>
+          </g>
+          <g transform="rotate(9 210 260)">
+            <rect x="80" y="246" width="260" height="72" rx="10" fill="url(#g2)"/>
+            <g stroke="#302a3d" stroke-width="2" opacity=".55">
+              <path d="M104 282h36M158 282h36M212 282h36M266 282h36"/>
+            </g>
+            <circle cx="140" cy="282" r="5" fill="#302a3d"/>
+            <circle cx="230" cy="282" r="5" fill="#302a3d"/>
+          </g>
+          <g font-family="Georgia,serif" fill="#302a3d" font-size="13" opacity=".8">
+            <text x="96" y="366">通行版 112:07</text>
+            <text x="236" y="366">未删减 126:34</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <div class="main">
+
+      <!-- 领域概览 -->
+      <section class="sec" id="overview" aria-labelledby="h-overview">
+        <div class="sec-head"><h2 id="h-overview">版本概览：三个版本各是什么</h2><span>登记 3 版 / 校对 11-06</span></div>
+        <p class="sec-desc">同名剧集在流媒体、电视台与影碟渠道流通着三套剪辑。时长差集中在法院线、地下室线与片尾。先分清版本名称，再谈“未删减”多了什么。</p>
+        <div class="cards">
+          <article class="card">
+            <span class="tag">通行流媒体版</span>
+            <h3>112分07秒 · 共16集</h3>
+            <p>平台标注「全16集」，单集片头含45秒前情提要。第8集删去两段人物对手戏，法院走廊长镜头被切成三个短镜。</p>
+            <div class="facts">记录日期 2026-10-18 · 片源：平台在线播放</div>
+          </article>
+          <article class="card">
+            <span class="tag">未删减版</span>
+            <h3>126分34秒 · 导演剪辑顺序</h3>
+            <p>第8集恢复韩智秀与继母的正面对话，法院走廊改为完整长镜头；第12集多出地下室手电筒巡视段落约2分10秒。</p>
+            <div class="facts">记录日期 2026-11-06 · 片源：影碟附赠剪辑</div>
+          </article>
+          <article class="card">
+            <span class="tag">电视台播出版</span>
+            <h3>98分41秒 · 16集删节版</h3>
+            <p>电视台版把第8集拆成两集播出，片尾字幕顺序前移；片头人物介绍卡多出两帧。这一版与另两版的集数编号不通用。</p>
+            <div class="facts">记录日期 2026-10-29 · 片源：广播电视录制</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 精选内容推荐 -->
+      <section class="sec" id="picks" aria-labelledby="h-picks">
+        <div class="sec-head"><h2 id="h-picks">精选内容推荐：先看这四段</h2><span>按信息量排序</span></div>
+        <div class="cards">
+          <article class="card">
+            <span class="tag">第8集</span>
+            <h3>韩智秀与继母的七分钟对手戏</h3>
+            <p>未删减版从“你把钥匙留在门口”开始，到继母把茶杯推到桌沿结束，一次不剪。通行版只保留后半段质问。</p>
+            <div class="facts">时长 7:12 · 位置 第8集 34:20—41:32</div>
+          </article>
+          <article class="card">
+            <span class="tag">第12集</span>
+            <h3>地下室手电筒巡视段落</h3>
+            <p>导演剪辑版多出2分10秒的暗场巡视，镜头随光斑移动。电视台版整段切除，导致后面一句台词失去指代。</p>
+            <div class="facts">时长 2:10 · 位置 第12集 18:04—20:14</div>
+          </article>
+          <article class="card">
+            <span class="tag">第14集</span>
+            <h3>法院走廊一镜到底的走位</h3>
+            <p>未删减版一个镜头跟完从电梯口到审判庭门口，通行版被切成三镜，走位关系需要看对照表才能还原。</p>
+            <div class="facts">时长 3:46 · 位置 第14集 09:50—13:36</div>
+          </article>
+          <article class="card">
+            <span class="tag">第16集</span>
+            <h3>片尾多出的两句台词</h3>
+            <p>未删减版结尾多出两句低声对白，字幕并未收录，需对照声音轨。影碟版另附导演音轨说明这两句的取舍。</p>
+            <div class="facts">时长 0:22 · 位置 第16集 片尾字幕前</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 最新更新 -->
+      <section class="sec" id="latest" aria-labelledby="h-latest">
+        <div class="sec-head"><h2 id="h-latest">最新更新：本周登记的删减节点</h2><span>10-10 至 11-08</span></div>
+        <div class="list">
+          <div class="list-item">
+            <time datetime="2026-11-06">11-06</time>
+            <div>
+              <h3><span class="badge">新增</span>第8集「茶杯推到桌沿」节点登记完成</h3>
+              <p>未删减版 41:32 处保留继母起身、把茶杯推到桌沿的动作；通行版在此处直接切到下一场审讯。已附两版截图坐标，便于逐帧比对。</p>
+            </div>
+          </div>
+          <div class="list-item">
+            <time datetime="2026-11-04">11-04</time>
+            <div>
+              <h3>第14集走廊长镜头重新量测时长</h3>
+              <p>早前记录为3:38，复核时以审判庭门口脚步声为准，修正为3:46。差异出在通行版切点前多留了8秒环境声，此前误计入长镜头。</p>
+            </div>
+          </div>
+          <div class="list-item">
+            <time datetime="2026-10-28">10-28</time>
+            <div>
+              <h3>电视台版第8集拆集编号对照补全</h3>
+              <p>电视台版把第8集拆成第8、第9两集，导致后续集数整体后移。已补一张两版集数对应表，避免观众按集数找错位置。</p>
+            </div>
+          </div>
+          <div class="list-item">
+            <time datetime="2026-10-19">10-19</time>
+            <div>
+              <h3>第12集地下室段落补记声音差异</h3>
+              <p>未删减版保留手电筒开关声与远处水管滴答，电视台版整段静音剪辑。声音轨差异可作为该段是否被切除的旁证。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 分类入口 -->
+      <section class="sec" id="channels" aria-labelledby="h-channels">
+        <div class="sec-head"><h2 id="h-channels">分类入口：按集数、角色与删减点找</h2><span>11 个频道</span></div>
+        <div class="tag-index">
+          <a href="/#picks">第8集删减对照<b>14</b></a>
+          <a href="/#deep">法院走廊长镜头<b>6</b></a>
+          <a href="/#picks">地下室巡视段落<b>4</b></a>
+          <a href="/#latest">通行版与未删减时长差<b>9</b></a>
+          <a href="/#guide">影碟导演音轨说明<b>7</b></a>
+          <a href="/#faq">电视台版拆集编号<b>5</b></a>
+          <a href="/#commits">第16集片尾低声对白<b>3</b></a>
+          <a href="/#picks">韩智秀人物线取舍<b>8</b></a>
+          <a href="/#latest">继母对峙片段<b>6</b></a>
+          <a href="/#deep">片头前情提要对齐<b>2</b></a>
+          <a href="/#faq">字幕与声音轨差异<b>4</b></a>
+        </div>
+      </section>
+
+      <!-- 深度解析 -->
+      <section class="sec" id="deep" aria-labelledby="h-deep">
+        <div class="sec-head"><h2 id="h-deep">深度解析：剪掉的不是“尺度”，而是因果</h2><span>可核对 / 可反驳</span></div>
+        <div class="feature">
+          <div class="claim">
+            <strong>判断：</strong>三版差异的关键不在画面多少，而在人物动机的因果链是否完整。未删减版把继母的两次沉默留在第8集，让后面法院线的“临时翻供”有了解释；通行版剪掉沉默，翻供就变成剧情硬转折。
+          </div>
+
+          <h3>一、先把时长差拆成可核对的三段</h3>
+          <p>第8集 126:34 与 112:07 相差 14:27。逐段量测后，其中 7:12 属于韩智秀与继母的对手戏，3:46 属法院走廊长镜头，2:10 属地下室巡视，剩下约 1:19 分散在片头前情提要与转场空镜。这个拆分可以按截图坐标复核：通行版切点集中在 34:20、41:32、09:50 三个位置。</p>
+
+          <table class="compare">
+            <caption>第8集三版时长与关键段落对照（记录于 2026-11-06）</caption>
+            <thead>
+              <tr><th scope="col">版本</th><th scope="col">总长</th><th scope="col">对手戏</th><th scope="col">法院走廊</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>未删减版</td><td>126:34</td><td>完整 7:12</td><td>一镜 3:46</td></tr>
+              <tr><td>通行流媒体版</td><td>112:07</td><td>保留后半 3:05</td><td>切三镜 3:38</td></tr>
+              <tr><td>电视台版</td><td>98:41</td><td>仅剩 1:12</td><td>删</td></tr>
+            </tbody>
+          </table>
+
+          <h3>二、“翻供”那场戏的说法差异</h3>
+          <p>继母在法院走廊临时改口，通行版给的理由只有一句“我记错了”。未删减版在前一晚的厨房戏里，继母把钥匙放回抽屉时停顿了将近四秒，随后说“明天我照原话讲”。两句台词、一次停顿，构成观众可推的动机。影碟导演音轨在第8集 41:10 处解释，这段停顿是演员现场加的，剪掉后“翻供”只能靠观众自行补全。</p>
+          <p>需要区分三类信息：现场加停顿是导演音轨里的说法，属于创作者陈述；通行版删去该段是可用片长核对的事实；至于“删减是为了让节奏更快”，目前没有平台方公开说明，只能算推测。</p>
+
+          <h3>三、片头前情提要把因果又打乱一次</h3>
+          <p>平台版每集片头有45秒前情提要，内容由平台剪辑团队另做。第9集前情提要里出现了未删减版才有的厨房镜头，导致正片没播、提要先剧透。这一点在 10-28 的对照记录中被列出：提要镜头来自未删减素材，正片却是通行版，两者不同步。观众若从第9集开始看，会先看到“钥匙放回抽屉”，再在第9集正片里找不到这段。</p>
+
+          <h3>四、一个可以被反驳的点</h3>
+          <p>也有观众认为，通行版剪掉沉默反而让继母更冷硬，人物更统一。这个说法有它的道理：沉默会让人物显得犹豫，而通行版的继母始终算计清楚。两种读法各自成立，差别在于你把继母当“被胁迫者”还是“共谋者”。可核对的部分是：未删减版确实保留了两处沉默，通行版确实删去，至于哪种更好，属于观众判断，不进入事实层。</p>
+
+          <h3>五、地下室段落为何值得单独看</h3>
+          <p>第12集 18:04—20:14 的手电筒巡视，在未删减版里是一段几乎没有对白的暗场。光斑扫过墙面时，观众能看清一张被撕掉一半的缴费单。电视台版整段切除，后面韩智秀说“那张单子我见过”就失去指代对象。这段的价值不在“尺度”，而在道具线索的完整性。</p>
+        </div>
+      </section>
+
+      <!-- 体验指南 -->
+      <section class="sec" id="guide" aria-labelledby="h-guide">
+        <div class="sec-head"><h2 id="h-guide">体验指南：按顺序核对的五步</h2><span>适合初次对照</span></div>
+        <ol class="steps">
+          <li><b>先确认片源与集数编号。</b>流媒体版、影碟版、电视台版的集数不通用，电视台版第9集可能对应另两版的第8集后半。先看片头是否有前情提要，有提要的多半是平台版。</li>
+          <li><b>记下第8集三个切点。</b>34:20、41:32、09:50。在这三个位置按暂停，若画面直接跳场，说明是通行版；若还能看到人物动作延续，是未删减版。</li>
+          <li><b>核对声音轨。</b>地下室段落在未删减版有手电筒开关声与水管滴答声。戴耳机听 18:04 起的两分钟，若完全静音，该段已被切除。</li>
+          <li><b>片尾字幕前留22秒。</b>第16集片尾字幕前多出两句低声对白，字幕不收录。关掉字幕看一遍，再开字幕看一遍，能确认是否漏听。</li>
+          <li><b>用集数对照表回查。</b>若按电视台版看到第9集结尾觉得剧情跳，回到另两版的第8集末尾补看七分钟对手戏，因果链会顺很多。</li>
+        </ol>
+      </section>
+
+      <!-- 对照面板 -->
+      <section class="sec" id="panel" aria-labelledby="h-panel">
+        <div class="sec-head"><h2 id="h-panel">两种看法对照：先看长镜头还是先看对手戏</h2><span>取舍面板</span></div>
+        <div class="panel">
+          <div>
+            <span class="lab">路线 A</span>
+            <h3>先看对手戏</h3>
+            <ul>
+              <li>从第8集 34:20 开始，先补七分钟厨房对峙。</li>
+              <li>再回看法院走廊，翻供动机已清楚。</li>
+              <li>适合第一次看、怕剧情跳的观众。</li>
+              <li>代价是先知道继母的犹豫，悬念感下降。</li>
+            </ul>
+          </div>
+          <div>
+            <span class="lab">路线 B</span>
+            <h3>先看长镜头</h3>
+            <ul>
+              <li>先看第14集 09:50 的一镜到底走位。</li>
+              <li>再补第8集对手戏，理解走位里的沉默。</li>
+              <li>适合二刷、想看调度设计的观众。</li>
+              <li>代价是第一次看会漏掉因果线索。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="sec" id="faq" aria-labelledby="h-faq">
+        <div class="sec-head"><h2 id="h-faq">常见问题：时长、编号与字幕</h2><span>7 问</span></div>
+        <details class="faq">
+          <summary>未删减版和通行版差多少时间？</summary>
+          <div class="ans">按第8集量测，未删减版 126 分 34 秒，通行流媒体版 112 分 07 秒，差 14 分 27 秒。差额主要分布在三处：七分钟厨房对手戏、三分四十六秒法院走廊长镜头、两分十秒地下室巡视，其余为片头提要与转场空镜。</div>
+        </details>
+        <details class="faq">
+          <summary>电视台版为什么集数对不上？</summary>
+          <div class="ans">电视台版把第8集拆成两集播出，后续集数整体后移一位。看电视台版第9集时，实际内容对应另两版第8集后半。按集数找片段容易错位，建议以时间点和场景名定位，例如“茶杯推到桌沿”比“第9集”更可靠。</div>
+        </details>
+        <details class="faq">
+          <summary>片尾那两句台词字幕里为什么没有？</summary>
+          <div class="ans">第16集片尾字幕前的两句低声对白音量很低，字幕文件未收录。影碟版导演音轨在对应位置有说明，称是后期补录。核对方法是关掉字幕、调高音量听一遍，再对照音轨说明确认措辞。</div>
+        </details>
+        <details class="faq">
+          <summary>第12集地下室段落被剪后影响剧情吗？</summary>
+          <div class="ans">影响指代关系。该段光斑扫过墙面时露出一张被撕掉一半的缴费单，后面韩智秀说“那张单子我见过”就指向它。电视台版整段切除，这句台词失去对象，观众会觉得人物在说无来由的话。</div>
+        </details>
+        <details class="faq">
+          <summary>导演音轨说的“现场加停顿”可信吗？</summary>
+          <div class="ans">属于创作者陈述，可作参考但不能当事实定论。可核对的部分是：未删减版第8集 41:10 确有近四秒停顿，通行版没有。至于停顿是否为演员现场所加，目前只有音轨这一处说法，未见其他公开记录。</div>
+        </details>
+        <details class="faq">
+          <summary>平台版前情提要为什么会剧透？</summary>
+          <div class="ans">平台前情提要由另一套剪辑完成，素材取自未删减版。第9集提要里出现厨房放钥匙的镜头，正片却是通行版，于是出现“提要播了、正片没有”的错位。这属于两版素材混用，不是剧情设定。</div>
+        </details>
+        <details class="faq">
+          <summary>只想看差异，最短路径是什么？</summary>
+          <div class="ans">按顺序看三处：第8集 34:20—41:32、第14集 09:50—13:36、第16集片尾前 22 秒。三处合计约 12 分钟，能覆盖主要因果差异。地下室段落若时间允许再看，它对道具线索的补全作用大于情绪作用。</div>
+        </details>
+      </section>
+
+      <!-- 用户评论 -->
+      <section class="sec" id="commits" aria-labelledby="h-commits">
+        <div class="sec-head"><h2 id="h-commits">用户评论：看过对照表之后</h2><span>6 条</span></div>
+        <div class="commits">
+          <div class="commit">
+            <header><span class="avatar">林</span><b>林间慢跑</b><em>11-06</em></header>
+            <p>按 <span class="mark">34:20</span> 这个点去对，通行版确实一刀切到审讯室。补完七分钟再回看翻供，继母那句“我记错了”就没那么突兀了。</p>
+          </div>
+          <div class="commit">
+            <header><span class="avatar">周</span><b>周口店的风</b><em>11-05</em></header>
+            <p>电视台版拆集这事挺坑，我按第9集找厨房戏，找了半天没有。<span class="mark">集数对照表</span>要是早点看到就好了。</p>
+          </div>
+          <div class="commit">
+            <header><span class="avatar">陈</span><b>陈小满</b><em>11-04</em></header>
+            <p>地下室那段我倒觉得删了也不影响，缴费单后面也没再提。当然这是我个人观感，别当结论。</p>
+          </div>
+          <div class="commit">
+            <header><span class="avatar">许</span><b>许工不加班</b><em>11-03</em></header>
+            <p>走廊长镜头的走位确实好看，从电梯口到审判庭门口一口气跟完。<span class="mark">切三镜</span>之后空间关系就乱了，方向感全靠猜。</p>
+          </div>
+          <div class="commit">
+            <header><span class="avatar">何</span><b>何家阿姊</b><em>10-30</em></header>
+            <p>片尾那两句对白字幕没有，我开着字幕看了两遍都以为是环境音。关字幕后才听出来是低声说话，这处理有点藏。</p>
+          </div>
+          <div class="commit">
+            <header><span class="avatar">赵</span><b>赵四页</b><em>10-29</em></header>
+            <p>导演音轨说停顿是现场加的，我保留意见。音轨只有一处说法，也没别的记录能对上，先当参考。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 相关资讯 -->
+      <section class="sec" id="news" aria-labelledby="h-news">
+        <div class="sec-head"><h2 id="h-news">相关资讯：片源与版本动态</h2><span>4 条</span></div>
+        <div class="news">
+          <article>
+            <h3>影碟附赠剪辑说明页更新到第二版</h3>
+            <p>说明页列出第8、12、14、16四集的恢复段落，与站内对照记录一致。第二版补上了地下室段落的时长，标注2分10秒。</p>
+            <span class="src">来源：影碟内页 · 2026-10-26</span>
+          </article>
+          <article>
+            <h3>平台版片头前情提要被指素材不同步</h3>
+            <p>第9集提要出现未删减版厨房镜头，正片为通行版。平台未公开回应，目前只能按镜头逐一比对确认错位范围。</p>
+            <span class="src">来源：观众对照记录 · 2026-10-28</span>
+          </article>
+          <article>
+            <h3>电视台版重播安排未变，仍为拆集版</h3>
+            <p>重播沿用98分41秒版本，第8集继续拆成两集。若按重播追剧，需注意集数后移一位，片尾字幕顺序也随之改变。</p>
+            <span class="src">来源：节目表 · 2026-11-01</span>
+          </article>
+          <article>
+            <h3>第14集走廊镜头时长复核记录公开</h3>
+            <p>复核以审判庭门口脚步声为准，把3分38秒修正为3分46秒，多出的8秒原被误算进长镜头，实为通行版切点前的环境声。</p>
+            <span class="src">来源：对照台账 · 2026-11-04</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- 相关推荐 -->
+      <section class="sec" id="reco" aria-labelledby="h-reco">
+        <div class="sec-head"><h2 id="h-reco">相关推荐：继续查这些条目</h2><span>标签索引</span></div>
+        <div class="reco">
+          <a href="/#picks">第8集厨房对峙完整台词</a>
+          <a href="/#deep">法院走廊一镜到底走位图</a>
+          <a href="/#picks">地下室缴费单道具线索</a>
+          <a href="/#guide">未删减版声音轨核对方法</a>
+          <a href="/#faq">电视台版拆集编号对照表</a>
+          <a href="/#latest">第16集片尾低声对白</a>
+          <a href="/#news">影碟导演音轨说明第二版</a>
+          <a href="/#faq">平台版前情提要错位</a>
+          <a href="/#panel">先看长镜头还是对手戏</a>
+          <a href="/#commits">观众对照记录摘选</a>
+        </div>
+      </section>
+
+      <!-- 时间线 -->
+      <section class="sec" id="timeline" aria-labelledby="h-timeline">
+        <div class="sec-head"><h2 id="h-timeline">校对时间线：这一个月发生了什么</h2><span>10-10 至 11-08</span></div>
+        <ul class="timeline">
+          <li>
+            <time datetime="2026-10-10">10-10</time>
+            <h3>建立三版片源清单</h3>
+            <p>登记流媒体版、影碟版、电视台版各自的集数、时长与片头结构，先解决“同名不同版”的基础问题。</p>
+          </li>
+          <li>
+            <time datetime="2026-10-19">10-19</time>
+            <h3>第12集地下室段落补记声音差异</h3>
+            <p>确认未删减版保留开关声与水管滴答，电视台版整段静音剪辑，声音成为判断该段是否被切的旁证。</p>
+          </li>
+          <li>
+            <time datetime="2026-10-28">10-28</time>
+            <h3>补全电视台版拆集编号</h3>
+            <p>第8集拆成两集，后续整体后移。补一张两版集数对应表，避免按集数找错位置。</p>
+          </li>
+          <li>
+            <time datetime="2026-11-04">11-04</time>
+            <h3>走廊长镜头时长修正</h3>
+            <p>3分38秒改为3分46秒，差异来自通行版切点前多留的8秒环境声，此前误计入长镜头。</p>
+          </li>
+          <li>
+            <time datetime="2026-11-06">11-06</time>
+            <h3>第8集三个切点坐标登记完成</h3>
+            <p>34:20、41:32、09:50 三个位置附截图坐标，使“是否删减”可以逐帧比对，不再凭记忆判断。</p>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+    <!-- 侧栏 -->
+    <aside class="side" aria-label="侧栏导航与速查">
+      <div class="side-card">
+        <h3>本页栏目</h3>
+        <ul class="side-nav" id="sideNav">
+          <li><a href="/#overview">版本概览</a></li>
+          <li><a href="/#picks">精选对照</a></li>
+          <li><a href="/#latest">最新更新</a></li>
+          <li><a href="/#channels">分类入口</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">观看指南</a></li>
+          <li><a href="/#panel">取舍面板</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#commits">用户评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#reco">相关推荐</a></li>
+          <li><a href="/#timeline">校对时间线</a></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>速查数字</h3>
+        <ul class="mini">
+          <li><b>126:34</b><span>未删减版第8集总长</span></li>
+          <li><b>14:27</b><span>与通行版时长差</span></li>
+          <li><b>7:12</b><span>厨房对手戏长度</span></li>
+          <li><b>3:46</b><span>法院走廊长镜头</span></li>
+          <li><b>2:10</b><span>地下室巡视段落</span></li>
+          <li><b>37</b><span>已登记删减节点</span></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>查找提示</h3>
+        <p style="font-size:var(--fs-s);color:var(--ink-soft);margin:0">输入“地下室”“走廊”“34:20”或角色名，可在本地条目中检索。结果为空时会给出提示，不跳转外部页面。</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="f-brand">
+          <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true">
+            <rect x="2" y="2" width="36" height="36" rx="10" fill="#4a3f60"/>
+            <rect x="10" y="9" width="20" height="22" rx="3" fill="none" stroke="#e3b04b" stroke-width="1.6"/>
+            <circle cx="20" cy="20" r="3.4" fill="#e3b04b"/>
+          </svg>
+          <span>禁止的爱善良的未删减</span>
+        </div>
+        <p>对照片源、时长与切点，把版本差异落回可以逐帧核对的位置。</p>
+      </div>
+      <div>
+        <h2>版本资料</h2>
+        <a href="/#overview">三版片源清单</a>
+        <a href="/#picks">逐集对照条目</a>
+        <a href="/#latest">本周删减节点</a>
+        <a href="/#timeline">校对时间线</a>
+      </div>
+      <div>
+        <h2>观看帮助</h2>
+        <a href="/#guide">五步核对法</a>
+        <a href="/#panel">两种看法对照</a>
+        <a href="/#faq">时长与编号答疑</a>
+        <a href="/#reco">长尾条目索引</a>
+      </div>
+      <div>
+        <h2>讨论</h2>
+        <a href="/#commits">观众对照记录</a>
+        <a href="/#news">片源动态</a>
+        <a href="/#channels">按集数找片段</a>
+        <a href="/#top">回到公告条</a>
+      </div>
+    </div>
+    <div class="legal">
+      <p>片源、时长与切点均为示例数据，用于版本对照示范；具体以实际播放内容为准。内容更新至 2026-11-08。</p>
+      <p>© 2026 禁止的爱善良的未删减 · 版本对照档案</p>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mainNav');
+  if(menuBtn && nav){
+    menuBtn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function(e){
+      if(e.target.tagName === 'A' && window.innerWidth <= 1020){
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 520){ toTop.classList.add('on'); }
+    else { toTop.classList.remove('on'); }
+  }, {passive:true});
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  var sideLinks = Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var sections = sideLinks.map(function(a){
+    var id = a.getAttribute('href').replace('/#','');
+    return document.getElementById(id);
+  }).filter(Boolean);
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          sideLinks.forEach(function(a){ a.classList.remove('active'); });
+          var link = document.querySelector('#sideNav a[href="/#'+en.target.id+'"]');
+          if(link) link.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-30% 0px -60% 0px', threshold:0});
+    sections.forEach(function(s){ io.observe(s); });
+  }
+
+  var form = document.getElementById('searchForm');
+  var q = document.getElementById('q');
+  var note = document.getElementById('searchNote');
+  var result = document.getElementById('searchResult');
+  var index = [
+    {t:'第8集厨房对手戏 34:20—41:32', k:'第8集 厨房 对手戏 34:20 41:32 韩智秀 继母 茶杯 通行版 未删减'},
+    {t:'第8集茶杯推到桌沿 41:32', k:'第8集 茶杯 桌沿 41:32 继母 删减 截图 坐标'},
+    {t:'法院走廊一镜到底 3:46', k:'法院 走廊 长镜头 3:46 14集 09:50 切三镜 走位'},
+    {t:'地下室手电筒巡视 2:10', k:'地下室 手电筒 巡视 2:10 12集 18:04 缴费单 声音'},
+    {t:'第16集片尾两句低声对白', k:'第16集 片尾 对白 22秒 字幕 声音轨 导演音轨'},
+    {t:'电视台版拆集编号对照', k:'电视台 拆集 编号 第9集 集数 后移 98:41'},
+    {t:'三版时长对照 126:34 112:07', k:'时长 对照 126:34 112:07 14:27 通行版 未删减'},
+    {t:'前情提要素材错位', k:'前情提要 平台版 素材 错位 第9集 厨房 剧透'},
+    {t:'导演音轨现场加停顿', k:'导演音轨 停顿 41:10 现场 陈述 参考'},
+    {t:'五步核对法', k:'核对 方法 步骤 片源 声音轨 字幕 集数'},
+    {t:'影碟说明页第二版', k:'影碟 说明页 第二版 恢复段落 10-26'},
+    {t:'校对时间线 10-10 至 11-08', k:'时间线 校对 10-10 11-06 节点 修正'},
+    {t:'观众评论摘选', k:'评论 观众 对照 记录 争议 保留意见'}
+  ];
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var kw = (q.value || '').trim();
+    note.classList.add('on');
+    if(!kw){
+      result.textContent = '请输入集数、角色名或时间点，例如“地下室”或“34:20”。';
+      return;
+    }
+    var hits = index.filter(function(it){
+      return it.t.indexOf(kw) > -1 || it.k.indexOf(kw) > -1;
+    });
+    if(hits.length === 0){
+      result.textContent = '没有找到与“' + kw + '”匹配的条目。可换用场景名、集数或时间点再试，例如“走廊”“第12集”“18:04”。';
+    } else {
+      result.innerHTML = '找到 ' + hits.length + ' 条：' + hits.map(function(h){
+        return '<a href="/#picks">' + h.t + '</a>';
+      }).join('　·　');
+    }
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"禁止的爱善良的未删减",
+  "inLanguage":"zh-CN",
+  "description":"版本差异对照与观看指南，记录通行版、未删减版与电视台版的时长、切点与声音轨区别。"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"未删减版和通行版差多少时间？","acceptedAnswer":{"@type":"Answer","text":"按第8集量测，未删减版126分34秒，通行流媒体版112分07秒，差14分27秒，主要分布在厨房对手戏、法院走廊长镜头与地下室巡视三段。"}},
+    {"@type":"Question","name":"电视台版为什么集数对不上？","acceptedAnswer":{"@type":"Answer","text":"电视台版把第8集拆成两集播出，后续集数整体后移一位。看电视台版第9集时，实际内容对应另两版第8集后半，建议以时间点和场景名定位。"}},
+    {"@type":"Question","name":"片尾那两句台词字幕里为什么没有？","acceptedAnswer":{"@type":"Answer","text":"第16集片尾字幕前的两句低声对白音量很低，字幕文件未收录。影碟版导演音轨在对应位置有说明，可关掉字幕调高音量核对。"}},
+    {"@type":"Question","name":"第12集地下室段落被剪后影响剧情吗？","acceptedAnswer":{"@type":"Answer","text":"影响指代关系。该段光斑扫过墙面时露出一张被撕掉一半的缴费单，后面韩智秀说那张单子我见过就指向它，电视台版整段切除后这句失去对象。"}},
+    {"@type":"Question","name":"导演音轨说的现场加停顿可信吗？","acceptedAnswer":{"@type":"Answer","text":"属于创作者陈述，可作参考但不能当事实定论。可核对的部分是未删减版第8集41:10确有近四秒停顿，通行版没有，目前只有音轨这一处说法。"}},
+    {"@type":"Question","name":"平台版前情提要为什么会剧透？","acceptedAnswer":{"@type":"Answer","text":"平台前情提要由另一套剪辑完成，素材取自未删减版。第9集提要出现厨房放钥匙的镜头，正片却是通行版，于是出现提要播了正片没有的错位。"}},
+    {"@type":"Question","name":"只想看差异，最短路径是什么？","acceptedAnswer":{"@type":"Answer","text":"按顺序看三处：第8集34:20至41:32、第14集09:50至13:36、第16集片尾前22秒，合计约12分钟，能覆盖主要因果差异。"}}
+  ]
+}
+</script>
+</body>
+  </html>
